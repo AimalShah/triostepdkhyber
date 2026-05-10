@@ -11,7 +11,7 @@ const { products } = Astro.props;
 ---
 
 <div
-    class="md:hidden w-screen ull pb-2 -mx-6 px-0 border border-gray-200 border-t border-b bg-white box-border"
+    class="md:hidden w-screen pb-2 -mx-6 px-0 border border-gray-200 border-t border-b bg-white box-border max-w-screen"
 >
     <div
         id="new-arrivals-mobile-swiper"
@@ -69,7 +69,7 @@ const { products } = Astro.props;
 
 <script>
     import Swiper from "swiper";
-    import { Pagination } from "swiper/modules";
+    import { Autoplay, Pagination } from "swiper/modules";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
 
     import "swiper/css";
@@ -90,15 +90,17 @@ const { products } = Astro.props;
         root.dataset.swiperMounted = "true";
 
         new Swiper(root, {
-            modules: [Pagination],
+            modules: [Pagination, Autoplay],
             slidesPerView: 2,
             spaceBetween: 0,
             watchSlidesProgress: true,
-            allowSlideNext: true,
-            autoplay: {
-                delay: 500,
-            },
             loop: true,
+            speed: 650,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
         });
 
         ScrollTrigger.refresh();
