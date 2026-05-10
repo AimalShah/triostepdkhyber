@@ -1,0 +1,21 @@
+---
+import CraftingPremiumLead from './CraftingPremiumLead.astro';
+import CraftingHandStitch from './CraftingHandStitch.astro';
+import CraftingSustainableTile from './CraftingSustainableTile.astro';
+import CraftingFinishingTile from './CraftingFinishingTile.astro';
+---
+
+<!-- BEGIN: About Brand -->
+<section data-animate-section class="w-full bg-gray-50 py-16 md:py-24 border-t border-gray-200">
+	<div class="max-w-[1200px] mx-auto px-4 sm:px-6 text-center">
+		<h2 class="font-display text-3xl md:text-4xl font-bold uppercase tracking-tighter mb-8">Crafting Classics</h2>
+		<div class="w-12 h-px bg-black mx-auto mb-12"></div>
+		<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 text-left auto-rows-fr">
+			<CraftingPremiumLead />
+			<CraftingHandStitch />
+			<CraftingSustainableTile />
+			<CraftingFinishingTile />
+		</div>
+	</div>
+</section>
+<!-- END: About Brand -->

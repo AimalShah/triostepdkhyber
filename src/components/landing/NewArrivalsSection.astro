@@ -1,0 +1,32 @@
+---
+import ProductCard from './ProductCard.astro';
+import NewArrivalsMobileSwiper from './NewArrivalsMobileSwiper.astro';
+
+import { PRODUCTS } from '../../data/products';
+---
+
+<!-- BEGIN: New Arrivals -->
+<section data-animate-section class="max-w-[1440px] mx-auto px-4 sm:px-6 py-16 md:py-24">
+	<div class="flex justify-between items-end mb-8 gap-4">
+		<h2 class="font-display text-2xl md:text-3xl font-bold uppercase tracking-tight">New Arrivals</h2>
+		<a class="text-[11px] uppercase tracking-wider hover:text-gray-500 transition-colors inline-flex items-center shrink-0" href="#">
+			See All <span class="ml-1">↗</span>
+		</a>
+	</div>
+
+	<NewArrivalsMobileSwiper products={PRODUCTS} />
+
+	<div class="hidden md:grid md:grid-cols-4 border border-gray-200 product-grid-borders">
+		{
+			PRODUCTS.map((product) => (
+				<ProductCard
+					title={product.title}
+					priceLabel={product.price}
+					imageSrc={product.image}
+					imageAlt={product.alt}
+				/>
+			))
+		}
+	</div>
+</section>
+<!-- END: New Arrivals -->

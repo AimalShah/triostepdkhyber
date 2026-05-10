@@ -1,0 +1,59 @@
+---
+import { CAMPAIGN_IMAGE_URL } from "../../data/products";
+---
+
+<!-- BEGIN: Hero Section -->
+<section class="w-full relative bg-red-400 max-w-[1440px]">
+    <div
+        data-animate-section
+        class="w-screen aspect-[16/9] md:aspect-[21/10] bg-red-300 relative overflow-hidden"
+    >
+        <img
+            class="w-full h-full object-cover object-top"
+            src={CAMPAIGN_IMAGE_URL}
+            alt="Editorial Campaign"
+            width={2400}
+            height={1140}
+            fetchpriority="high"
+            decoding="async"
+        />
+        <!-- Hero Text Overlay -->
+        <div
+            class="absolute inset-0 flex flex-col justify-end p-8 md:p-16 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+        >
+            <div class="max-w-xl text-white">
+                <h1
+                    class="font-display text-5xl sm:text-6xl md:text-8xl font-bold uppercase leading-[0.85] tracking-tighter mb-4 overflow-hidden"
+                >
+                    <span class="block overflow-hidden">
+                        <span data-animate="hero-title-1" class="block"
+                            >URBAN</span
+                        >
+                    </span>
+                    <span class="block overflow-hidden">
+                        <span data-animate="hero-title-2" class="block"
+                            >CLASSIC</span
+                        >
+                    </span>
+                </h1>
+                <div
+                    class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6"
+                >
+                    <p
+                        data-animate="hero-caption"
+                        class="text-sm font-light max-w-xs"
+                    >
+                        New collection for comfort and style in the city.
+                    </p>
+                    <a
+                        data-animate="hero-cta"
+                        class="inline-flex text-xs uppercase tracking-widest border-b border-white pb-1 hover:text-gray-300 transition-colors items-center w-fit mt-2 sm:mt-0 sm:ml-2"
+                        href="#"
+                    >
+                        Watch <span class="ml-2">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

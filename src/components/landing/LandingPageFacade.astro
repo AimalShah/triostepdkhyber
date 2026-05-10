@@ -1,0 +1,22 @@
+---
+/**
+ * Landing page façade — single entry that composes all sections and delegates motion to `landing.facade`.
+ */
+import SiteHeader from "./SiteHeader.astro";
+import HeroSection from "./HeroSection.astro";
+import VideoSection from "./VideoSection.astro";
+import NewArrivalsSection from "./NewArrivalsSection.astro";
+import HeritageSection from "./HeritageSection.astro";
+import CraftingClassicsSection from "./CraftingClassicsSection.astro";
+import NewsletterSection from "./NewsletterSection.astro";
+import LandingInit from "./LandingInit.astro";
+---
+
+<main id="site-main">
+    <HeroSection />
+    <NewArrivalsSection />
+    <HeritageSection />
+    <CraftingClassicsSection />
+    <NewsletterSection />
+</main>
+<LandingInit />

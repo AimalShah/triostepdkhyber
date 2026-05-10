@@ -1,0 +1,33 @@
+@import 'lenis/dist/lenis.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.product-grid-borders > div {
+	border-right: 1px solid #e5e5e5;
+}
+
+.product-grid-borders > div:last-child {
+	border-right: none;
+}
+
+/* Swiper mobile carousel — typography matches design */
+.new-arrivals-swiper .swiper-pagination-bullet {
+	background: #1a1a1a;
+	opacity: 0.25;
+}
+
+.new-arrivals-swiper .swiper-pagination-bullet-active {
+	opacity: 1;
+}
+
+.material-symbols-outlined {
+	font-family: 'Material Symbols Outlined', sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+	display: inline-block;
+	line-height: 1;
+	vertical-align: middle;
+}

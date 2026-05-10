@@ -1,0 +1,12 @@
+---
+---
+
+<script>
+	import { bootstrapLandingAnimations } from '../../facades/landing.facade';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	bootstrapLandingAnimations();
+	requestAnimationFrame(() => ScrollTrigger.refresh());
+	requestAnimationFrame(() => requestAnimationFrame(() => ScrollTrigger.refresh()));
+	setTimeout(() => ScrollTrigger.refresh(), 500);
+</script>

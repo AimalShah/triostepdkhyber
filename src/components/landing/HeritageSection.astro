@@ -1,0 +1,35 @@
+---
+import { HERITAGE_IMAGE_URL } from '../../data/products';
+---
+
+<!-- BEGIN: Featured Collection -->
+<section data-animate-section class="w-full bg-white max-w-[1440px] mx-auto px-4 sm:px-6 py-16 md:py-24 border-t border-gray-200">
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+		<div class="order-2 md:order-1 pr-0 md:pr-16">
+			<h2 class="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6">
+				The Heritage<br />Collection
+			</h2>
+			<p class="text-sm text-gray-600 font-light leading-relaxed mb-8 max-w-md">
+				Discover our signature line of handcrafted Chelsea boots. Made from premium Italian leather, each pair is designed
+				for durability, comfort, and timeless style. The perfect foundation for any wardrobe.
+			</p>
+			<a
+				class="inline-block border border-black px-8 py-3 text-xs uppercase tracking-widest font-medium hover:bg-black hover:text-white transition-colors text-center max-w-[min(100%,320px)] w-full md:w-auto"
+				href="#"
+			>
+				Explore Collection
+			</a>
+		</div>
+		<div class="order-1 md:order-2 aspect-[4/5] bg-gray-100 max-h-[72vh] md:max-h-none">
+			<img
+				class="w-full h-full object-cover"
+				src={HERITAGE_IMAGE_URL}
+				alt="Heritage Collection Lifestyle"
+				width={960}
+				height={1200}
+				loading="lazy"
+			/>
+		</div>
+	</div>
+</section>
+<!-- END: Featured Collection -->

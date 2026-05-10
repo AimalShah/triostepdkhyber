@@ -1,0 +1,37 @@
+---
+import { CAMPAIGN_IMAGE_URL } from '../../data/products';
+---
+
+<!-- BEGIN: Video Section -->
+<section data-animate-section class="w-full max-w-[1440px] mx-auto bg-black">
+	<div
+		data-animate-video-section
+		class="relative w-full aspect-video md:aspect-[21/9] overflow-hidden group cursor-pointer"
+	>
+		<img
+			class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+			src={CAMPAIGN_IMAGE_URL}
+			alt="Collection Video Preview"
+			width={2400}
+			height={1029}
+			loading="lazy"
+		/>
+		<div data-animate-video-play class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+			<div
+				data-animate-video-play-inner
+				class="w-16 h-16 md:w-20 md:h-20 rounded-full border border-white/50 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300"
+			>
+				<span class="material-symbols-outlined text-white text-4xl md:text-5xl translate-x-1 select-none">
+					play_arrow
+				</span>
+			</div>
+		</div>
+	</div>
+	<div data-animate-section class="px-6 sm:px-8 py-6 bg-white">
+		<p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium mb-1">Behind the craftsmanship</p>
+		<h3 class="font-display text-lg font-bold uppercase tracking-tight text-dark">
+			Making of the Heritage Line
+		</h3>
+	</div>
+</section>
+<!-- END: Video Section -->

@@ -1,0 +1,43 @@
+---
+import BookmarkButton from './BookmarkButton.astro';
+
+export interface Props {
+	title: string;
+	priceLabel: string;
+	imageSrc: string;
+	imageAlt: string;
+	bottomBorderMd?: boolean;
+}
+
+const {
+	title,
+	priceLabel,
+	imageSrc,
+	imageAlt,
+	bottomBorderMd = true,
+} = Astro.props;
+---
+
+<div class:list={[
+  'relative group p-6 flex flex-col h-full',
+  bottomBorderMd && 'border-b md:border-b-0 border-gray-200',
+]}
+>
+  <BookmarkButton class="absolute top-4 right-4" />
+  <div class="aspect-[3/4] bg-white mb-4 w-full flex items-center justify-center p-4">
+    <img class="w-full h-full object-contain mix-blend-multiply" src={imageSrc} alt={imageAlt} loading="lazy" />
+  </div>
+  <div class="mt-auto border-t border-gray-200 pt-4 flex justify-between items-end">
+    <div>
+      <h3 class="text-xs font-bold uppercase tracking-tight mb-1">{title}</h3>
+      <p class="text-[11px] text-gray-500">{priceLabel}</p>
+    </div>
+    <button
+      class="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-lg leading-none hover:bg-gray-800 transition-colors"
+      type="button"
+      aria-label="Add to cart"
+    >
+      +
+    </button>
+  </div>
+</div>

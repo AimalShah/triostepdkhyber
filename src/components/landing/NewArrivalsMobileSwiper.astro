@@ -1,0 +1,111 @@
+---
+import BookmarkButton from "./BookmarkButton.astro";
+
+import type { Product } from "../../data/products";
+
+interface Props {
+    products: Product[];
+}
+
+const { products } = Astro.props;
+---
+
+<div
+    class="md:hidden w-screen ull pb-2 -mx-6 px-0 border border-gray-200 border-t border-b bg-white box-border"
+>
+    <div
+        id="new-arrivals-mobile-swiper"
+        class="swiper new-arrivals-swiper w-full overflow-hidden"
+    >
+        <div class="swiper-wrapper">
+            {
+                products.map((product, idx) => (
+                    <div
+                        class:list={[
+                            "swiper-slide !h-auto box-border",
+                            idx % 2 === 0 ? "border-r border-gray-200" : "",
+                            idx >= 2 ? "border-t border-gray-200" : "",
+                        ]}
+                    >
+                        <div class="relative group p-6 flex flex-col h-full bg-white">
+                            <BookmarkButton class="absolute top-4 right-4" />
+                            <div class="aspect-[3/4] bg-white mb-4 w-full flex items-center justify-center p-4">
+                                <img
+                                    class="w-full h-full object-contain mix-blend-multiply"
+                                    src={product.image}
+                                    alt={product.alt}
+                                    loading="lazy"
+                                />
+                            </div>
+                            <div class="mt-auto border-t border-gray-200 pt-4 flex justify-between items-end">
+                                <div>
+                                    <h3 class="text-xs font-bold uppercase tracking-tight mb-1">
+                                        {product.title}
+                                    </h3>
+                                    <p class="text-[11px] text-gray-500">
+                                        {product.price}
+                                    </p>
+                                </div>
+                                <button
+                                    class="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-lg leading-none hover:bg-gray-800 transition-colors"
+                                    type="button"
+                                    aria-label="Add to cart"
+                                >
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+        <div
+            id="new-arrivals-swiper-pagination"
+            class="swiper-pagination !relative !bottom-auto py-5 border-t border-gray-200 bg-white justify-center gap-2"
+        >
+        </div>
+    </div>
+</div>
+
+<script>
+    import Swiper from "swiper";
+    import { Pagination } from "swiper/modules";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    import "swiper/css";
+    import "swiper/css/pagination";
+
+    function mount() {
+        const root = document.getElementById("new-arrivals-mobile-swiper");
+        const paginationEl = document.getElementById(
+            "new-arrivals-swiper-pagination",
+        );
+        if (
+            !root?.querySelector(".swiper-slide") ||
+            !paginationEl ||
+            root.dataset.swiperMounted
+        )
+            return;
+
+        root.dataset.swiperMounted = "true";
+
+        new Swiper(root, {
+            modules: [Pagination],
+            slidesPerView: 2,
+            spaceBetween: 0,
+            watchSlidesProgress: true,
+            allowSlideNext: true,
+            autoplay: {
+                delay: 500,
+            },
+            loop: true,
+        });
+
+        ScrollTrigger.refresh();
+        requestAnimationFrame(() => ScrollTrigger.refresh());
+        setTimeout(() => ScrollTrigger.refresh(), 400);
+    }
+
+    if (document.readyState !== "loading") mount();
+    document.addEventListener("DOMContentLoaded", mount);
+</script>

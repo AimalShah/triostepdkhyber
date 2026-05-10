@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CHLSEA - E-commerce</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Oswald', 'sans-serif'],
+          },
+          colors: {
+            dark: '#1a1a1a',
+            light: '#f5f5f5',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-utilities">
+    /* Custom utility for the main brand text */
+    .brand-text-clip {
+      background: #1a1a1a;
+      color: white;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+    
+    /* Product card border styling */
+    .product-grid-borders > div {
+      border-right: 1px solid #e5e5e5;
+    }
+    .product-grid-borders > div:last-child {
+      border-right: none;
+    }
+  </style>
+</head>
+<body class="bg-white text-dark font-sans antialiased">
+<!-- BEGIN: Navigation -->
+<header class="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
+<div class="max-w-[1440px] mx-auto px-6 py-4 flex justify-between items-center text-[11px] uppercase tracking-wider font-medium">
+<!-- Logo -->
+<a class="font-display text-xl font-bold tracking-tighter" href="#">CHLSEA</a>
+<!-- Center Links -->
+<nav class="hidden md:flex space-x-8">
+<a class="hover:text-gray-500 transition-colors" href="#">Catalog</a>
+<a class="hover:text-gray-500 transition-colors" href="#">Collections</a>
+<a class="hover:text-gray-500 transition-colors" href="#">Sale</a>
+<a class="hover:text-gray-500 transition-colors" href="#">About Brand</a>
+</nav>
+<!-- Right Links -->
+<div class="flex space-x-6">
+<a class="hover:text-gray-500 transition-colors" href="#">Account</a>
+<a class="hover:text-gray-500 transition-colors" href="#">Search</a>
+<a class="hover:text-gray-500 transition-colors" href="#">Favorites</a>
+<a class="hover:text-gray-500 transition-colors" href="#">Cart(0)</a>
+</div>
+</div>
+</header>
+<!-- END: Navigation -->
+<!-- BEGIN: Hero Section -->
+<section class="w-full relative bg-gray-100 max-w-[1440px] mx-auto">
+<!-- Editorial Image -->
+<div class="w-full aspect-[21/9] md:aspect-[21/10] bg-gray-300 relative overflow-hidden">
+<img alt="Editorial Campaign" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3BpYvTuTymEyoVg4HSsE7Xq3GhDfqkYJe-cDx-UfWTn-Xk1SQ06t-lNpZQ5M1CivIAoEeiwVO6Zg7hRrK-mJo7z8lJcaJ_DAKp3eJEVESloXGKv6tl98nysq3UJZCLOtPhoXszUI6aJKRuV_XdkAhd7qQnB0ksMKIM27KPZdigs7C07ZQN30Oom2Ct1qnkXSG0Unp7pTrMZaktV5XFEFGgIbkBKsRBUv5bnLxMhO-8xp14EfctWg1WKGJiEZnGCSCgCE--THC10M"/>
+<!-- Hero Text Overlay -->
+<div class="absolute inset-0 flex flex-col justify-end p-8 md:p-16 bg-gradient-to-t from-black/60 via-transparent to-transparent">
+<div class="max-w-xl text-white">
+<h1 class="font-display text-6xl md:text-8xl font-bold uppercase leading-[0.85] tracking-tighter mb-4">
+            URBAN<br/>CLASSIC
+          </h1>
+<div class="flex items-center space-x-4">
+<p class="text-sm font-light max-w-xs">New collection for comfort and style in the city.</p>
+<a class="text-xs uppercase tracking-widest border-b border-white pb-1 hover:text-gray-300 transition-colors flex items-center" href="#">
+              Watch <span class="ml-2">↗</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section><!-- BEGIN: Video Section -->
+<section class="w-full max-w-[1440px] mx-auto bg-black">
+<div class="relative w-full aspect-video md:aspect-[21/9] overflow-hidden group cursor-pointer">
+<!-- Video Thumbnail Placeholder -->
+<img alt="Collection Video Preview" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3BpYvTuTymEyoVg4HSsE7Xq3GhDfqkYJe-cDx-UfWTn-Xk1SQ06t-lNpZQ5M1CivIAoEeiwVO6Zg7hRrK-mJo7z8lJcaJ_DAKp3eJEVESloXGKv6tl98nysq3UJZCLOtPhoXszUI6aJKRuV_XdkAhd7qQnB0ksMKIM27KPZdigs7C07ZQN30Oom2Ct1qnkXSG0Unp7pTrMZaktV5XFEFGgIbkBKsRBUv5bnLxMhO-8xp14EfctWg1WKGJiEZnGCSCgCE--THC10M"/>
+<!-- Overlay -->
+<div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-full border border-white/50 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-white text-4xl md:text-5xl translate-x-1">play_arrow</span>
+</div>
+</div>
+<!-- Text Overlay (Optional/Stylistic) -->
+</div><div class="px-8 py-6 bg-white">
+<p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium mb-1">Behind the craftsmanship</p>
+<h3 class="font-display text-lg font-bold uppercase tracking-tight text-dark">Making of the Heritage Line</h3>
+</div>
+</section>
+<!-- END: Video Section -->
+<!-- END: Hero Section -->
+<!-- BEGIN: New Arrivals -->
+<section class="max-w-[1440px] mx-auto px-6 py-16 md:py-24">
+<div class="flex justify-between items-end mb-8">
+<h2 class="font-display text-2xl md:text-3xl font-bold uppercase tracking-tight">New Arrivals</h2>
+<a class="text-[11px] uppercase tracking-wider hover:text-gray-500 transition-colors flex items-center" href="#">
+        See All <span class="ml-1">↗</span>
+</a>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 border border-gray-200 product-grid-borders">
+<!-- Product 1 -->
+<div class="relative group p-6 flex flex-col h-full border-b md:border-b-0 border-gray-200">
+<button class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5"></path></svg>
+</button>
+<div class="aspect-[3/4] bg-white mb-4 w-full flex items-center justify-center p-4">
+<img alt="Black Leather Chelsea" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5PWmFH5hvGQwwi1fBMEDbaqwt9Ewy4P6LJohUdcvCNkEIP4VEI57Pq8ZyrkHxXXBfIH2QWrsmiFqQ_zPKqs_QTNKimn51p4HoYFy-vj2sDBTUbT4Kz9vkSJVeaBcNy2onU1rUqoRI5QhcOKBSgA1QguS0z7P5KYbfKzergVqh5ZzB8WZzvRWD5IbTBS1VQHuGsF8zFRXLBrX2yuosZGVGryYLIjYDzFpKtFxpx4-Ta-jKWYGBK5RdZKX71Dg2-UAh70KOt9OMOAA"/>
+</div>
+<div class="mt-auto border-t border-gray-200 pt-4 flex justify-between items-end">
+<div>
+<h3 class="text-xs font-bold uppercase tracking-tight mb-1">Classic Black Leather</h3>
+<p class="text-[11px] text-gray-500">24 900 ₽</p>
+</div>
+<button class="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-lg leading-none hover:bg-gray-800 transition-colors">+</button>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="relative group p-6 flex flex-col h-full border-b md:border-b-0 border-gray-200">
+<button class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5"></path></svg>
+</button>
+<div class="aspect-[3/4] bg-white mb-4 w-full flex items-center justify-center p-4">
+<img alt="Brown Suede Chelsea" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_jrFpjKenNgj3QqfEOdf2fZcdMQW9sb9Vt28n1vBT_wLccd6I5VNLeN4cFmWJwzDKGY9yBxGDrkRSxqtY1fK8AylKCnZ2541XulhA_Kau2GPqtHnxI4aEpTzIyk1rf23lNJKwJ0bmD4e9NSrSbDad3QuqsSy5Wh1PejKPaW3XO3TKJB1v0AYqjxGwHO2laH6NMPeWd_BY0oyprOiW7CQIDiNEco8H8RnxMpqZbOQM9iyt3VtkQH31sf8db439qTQuoJ7GqGCZH2Q"/>
+</div>
+<div class="mt-auto border-t border-gray-200 pt-4 flex justify-between items-end">
+<div>
+<h3 class="text-xs font-bold uppercase tracking-tight mb-1">Desert Suede Boot</h3>
+<p class="text-[11px] text-gray-500">22 500 ₽</p>
+</div>
+<button class="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-lg leading-none hover:bg-gray-800 transition-colors">+</button>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="relative group p-6 flex flex-col h-full border-b md:border-b-0 border-gray-200">
+<button class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5"></path></svg>
+</button>
+<div class="aspect-[3/4] bg-white mb-4 w-full flex items-center justify-center p-4">
+<img alt="Chunky Sole Chelsea" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCF0N4uCBKjlB7ZGr4WW187KDNUadEcsPPw1fUDCR8vdtqWJ1fyCKBxSWD_tDoEYs2yCadqNsAcQmRsI_ZI6eXRzXLxJllyDnXnO1z-jN593DYWsz9gE-OFCTe6DHh0RtLIzM0I6W4iELRnPialBH9fyMWgzfv4dEHvJl7bCqViRTKbVfpakx26ojtIpwU3Yo6zEhKBe7pdL8fliPubuRSSS-VWYWxKaoQZ6L-3tY-90L-zT92n42_ez2Nx8RhQpRVgnXMnhXCj_4"/>
+</div>
+<div class="mt-auto border-t border-gray-200 pt-4 flex justify-between items-end">
+<div>
+<h3 class="text-xs font-bold uppercase tracking-tight mb-1">Chunky Sole Platform</h3>
+<p class="text-[11px] text-gray-500">28 000 ₽</p>
+</div>
+<button class="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-lg leading-none hover:bg-gray-800 transition-colors">+</button>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="relative group p-6 flex flex-col h-full">
+<button class="absolute top-4 right-4 text-gray-400 hover:text-black transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5"></path></svg>
+</button>
+<div class="aspect-[3/4] bg-white mb-4 w-full flex items-center justify-center p-4">
+<img alt="Olive Green Chelsea" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1dENSiDBqOw_6yuR-h06QOqjaaizCcWaYp9-xsBxUn-uM3bS62h7d7sQOZAsuY_KGYgtfiy20s7hQbRvl8A4uaVOQHzTAgh0DoyRyOihZM7luwf3YwdUIFd4-KluyLVcgvDJF7_2Lgw2kcP_xh4WyZxeVFYYlX4WHzrUfOGyS2zQg1y5KzK-Ok4IMgyecrf-GqoXhHhTovSZpp-h92HkvKEoZZQC-IkgoKggCV8bipTQyxwVnC8t-U-BfALKe_reBusMIxUcyWxQ"/>
+</div>
+<div class="mt-auto border-t border-gray-200 pt-4 flex justify-between items-end">
+<div>
+<h3 class="text-xs font-bold uppercase tracking-tight mb-1">Olive Green Edition</h3>
+<p class="text-[11px] text-gray-500">24 900 ₽</p>
+</div>
+<button class="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-lg leading-none hover:bg-gray-800 transition-colors">+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- END: New Arrivals -->
+<!-- BEGIN: Featured Collection (New Section) -->
+<section class="w-full bg-white max-w-[1440px] mx-auto px-6 py-16 md:py-24 border-t border-gray-200">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div class="order-2 md:order-1 pr-0 md:pr-16">
+<h2 class="font-display text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-6">The Heritage<br/>Collection</h2>
+<p class="text-sm text-gray-600 font-light leading-relaxed mb-8 max-w-md">
+          Discover our signature line of handcrafted Chelsea boots. Made from premium Italian leather, each pair is designed for durability, comfort, and timeless style. The perfect foundation for any wardrobe.
+        </p>
+<a class="inline-block border border-black px-8 py-3 text-xs uppercase tracking-widest font-medium hover:bg-black hover:text-white transition-colors" href="#">
+          Explore Collection
+        </a>
+</div>
+<div class="order-1 md:order-2 aspect-[4/5] bg-gray-100">
+<img alt="Heritage Collection Lifestyle" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRzhXgkXLZVxkVmw1tfwfK71Wr3iqmb7lf9djOCFwECzcTANA4W-R5gthYbUNAEqxXRGVHJf9UvKItwRxKOM0GdRbZzSXCnZuqeUqqNfIuW3ycz_SPW0BmPDIt2RM9K0pMhHsRuCE2NlW7orOm2mccqPy2k_EwDB8lMrtp8ALzdXjP83nb5foTNo-dae9cri73QNfjnt7ZqTikGnmkWmgX_ZGPaha_xdut-1APqQNaiMMH1sqIB4uBrIvIOh2Mfh8CI5ki5XFwuz8"/>
+</div>
+</div>
+</section>
+<!-- END: Featured Collection -->
+<!-- BEGIN: About Brand (New Section) -->
+<section class="w-full bg-gray-50 py-24 border-t border-gray-200">
+<div class="max-w-[1200px] mx-auto px-6 text-center">
+<h2 class="font-display text-3xl md:text-4xl font-bold uppercase tracking-tighter mb-8">Crafting Classics</h2>
+<div class="w-12 h-px bg-black mx-auto mb-12"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 text-left">
+<!-- Item 1: Premium Italian Leather (Large Feature) -->
+<div class="md:col-span-2 md:row-span-2 bg-white p-8 border border-gray-200 flex flex-col justify-between group overflow-hidden relative min-h-[400px]">
+<div class="z-10">
+<h3 class="font-display text-2xl font-bold uppercase tracking-tight mb-2">Premium Italian Leather</h3>
+<p class="text-xs text-gray-500 max-w-xs leading-relaxed uppercase tracking-wider">We source only the finest full-grain hides from traditional Tuscan tanneries, ensuring a patina that grows richer with every step.</p>
+</div>
+<div class="mt-auto z-10">
+<span class="text-[10px] uppercase tracking-widest border-b border-black pb-1">Process: Selection</span>
+</div>
+<div class="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gray-50 opacity-50 group-hover:scale-110 transition-transform duration-500"></div>
+</div>
+<!-- Item 2: Hand-stitched Precision (Wide) -->
+<div class="md:col-span-2 bg-white p-8 border border-gray-200 flex flex-col justify-between group">
+<div>
+<h3 class="font-display text-xl font-bold uppercase tracking-tight mb-2">Hand-stitched Precision</h3>
+<p class="text-xs text-gray-500 leading-relaxed uppercase tracking-wider">Each pair is assembled by master artisans. A minimum of 150 manual operations goes into every boot.</p>
+</div>
+<div class="mt-4 flex justify-between items-end">
+<span class="text-[10px] uppercase tracking-widest">Technique: Blake Stitch</span>
+<span class="material-symbols-outlined text-gray-300">precision_manufacturing</span>
+</div>
+</div>
+<!-- Item 3: Sustainable Sourcing (Small) -->
+<div class="bg-white p-8 border border-gray-200 flex flex-col justify-between group">
+<div>
+<h3 class="font-display text-lg font-bold uppercase tracking-tight mb-2">Sustainable Sourcing</h3>
+</div>
+<p class="text-[10px] text-gray-400 leading-tight uppercase tracking-widest">Ethical practices in every layer of our supply chain.</p>
+</div>
+<!-- Item 4: Finishing (Small) -->
+<div class="bg-dark text-white p-8 flex flex-col justify-between group">
+<div>
+<h3 class="font-display text-lg font-bold uppercase tracking-tight mb-2">The Final Touch</h3>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[10px] uppercase tracking-widest">Polishing</span>
+<span class="text-xl">↗</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: About Brand -->
+<!-- BEGIN: Newsletter -->
+<section class="max-w-[1440px] mx-auto px-6 py-16 md:py-24 border-t border-gray-200">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<div>
+<h2 class="font-display text-2xl md:text-3xl font-bold uppercase tracking-tight mb-4">Get a Discount</h2>
+</div>
+<div>
+<p class="text-[11px] text-gray-500 mb-6 max-w-xs">Receive 500 rubles when subscribing to the newsletter! Be the first to know about brand news.</p>
+<form class="flex border-b border-gray-300 pb-2">
+<input class="w-full bg-transparent border-none text-[11px] p-0 focus:ring-0 placeholder-gray-400" placeholder="e-mail" type="email"/>
+<button class="text-[11px] uppercase tracking-wider whitespace-nowrap hover:text-gray-500 transition-colors flex items-center" type="submit">
+            Subscribe <span class="ml-1">↗</span>
+</button>
+</form>
+</div>
+</div>
+</section>
+<!-- END: Newsletter -->
+<!-- BEGIN: Footer -->
+<footer class="w-full bg-dark text-white pt-16">
+<!-- Huge Brand Name -->
+<div class="max-w-[1440px] mx-auto px-6 mb-16 overflow-hidden">
+<h2 class="font-display text-[15vw] md:text-[200px] leading-[0.75] font-bold uppercase tracking-tighter text-center" style="letter-spacing: -0.06em;">
+        CHLSEA
+      </h2>
+</div>
+<div class="max-w-[1440px] mx-auto px-6 pb-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 text-[10px] uppercase tracking-wider text-gray-400">
+<!-- Column 1 -->
+<div class="flex flex-col space-y-3">
+<span class="text-white mb-2">About Store</span>
+<a class="hover:text-white transition-colors" href="#">About CHLSEA</a>
+<a class="hover:text-white transition-colors" href="#">Our Stores</a>
+<a class="hover:text-white transition-colors" href="#">Ask a Question</a>
+<a class="hover:text-white transition-colors" href="#">Details</a>
+<a class="hover:text-white transition-colors" href="#">Contacts</a>
+</div>
+<!-- Column 2 -->
+<div class="flex flex-col space-y-3">
+<span class="text-white mb-2">Buyers</span>
+<a class="hover:text-white transition-colors" href="#">FAQ</a>
+<a class="hover:text-white transition-colors" href="#">Product Care</a>
+<a class="hover:text-white transition-colors" href="#">Payment and Delivery</a>
+<a class="hover:text-white transition-colors" href="#">Exchange and Return</a>
+<a class="hover:text-white transition-colors" href="#">Bonus Program</a>
+<a class="hover:text-white transition-colors" href="#">Installment Payment</a>
+<a class="hover:text-white transition-colors" href="#">Split Payment</a>
+</div>
+<!-- Column 3 -->
+<div class="flex flex-col space-y-3">
+<span class="text-white mb-2">Contact Us</span>
+<a class="hover:text-white transition-colors normal-case" href="mailto:support@chlsea.com">support@chlsea.com</a>
+<a class="hover:text-white transition-colors normal-case" href="#">whatsapp (online orders)</a>
+<span class="text-white mt-6 mb-2">Socials</span>
+<a class="hover:text-white transition-colors normal-case" href="#">telegram</a>
+<a class="hover:text-white transition-colors normal-case" href="#">vkontakte</a>
+<a class="hover:text-white transition-colors normal-case" href="#">instagram</a>
+</div>
+<!-- Column 4 -->
+<div class="flex flex-col space-y-3">
+<span class="text-white mb-2">Stores in Moscow</span>
+<a class="hover:text-white transition-colors normal-case" href="tel:+79991234567">+7 (999) 123-45-67</a>
+<span class="normal-case">Kuznetsky Most, 4/3s1</span>
+<span class="text-white mt-6 mb-2">Stores in Ufa</span>
+<a class="hover:text-white transition-colors normal-case" href="tel:+79997654321">+7 (999) 765-43-21</a>
+<span class="normal-case">Kommunisticheskaya, 33</span>
+</div>
+</div>
+<!-- Footer Bottom -->
+<div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800 text-[10px] text-gray-500 uppercase tracking-wider">
+<span>© 2024 CHLSEA</span>
+<a class="hover:text-white transition-colors mt-4 md:mt-0" href="#">Public Offer</a>
+<a class="hover:text-white transition-colors mt-4 md:mt-0" href="#">Website Development</a>
+<a class="hover:text-white transition-colors mt-4 md:mt-0" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+</body></html>
