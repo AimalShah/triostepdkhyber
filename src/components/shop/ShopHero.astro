@@ -1,0 +1,30 @@
+---
+/**
+ * ShopHero — editorial banner above the product catalog.
+ * Mirrors the design pattern from HeroSection.astro.
+ */
+---
+
+<section class="w-full relative bg-gray-100 max-w-[1440px] mx-auto border-b border-gray-200">
+    <!-- Editorial Image -->
+    <div class="w-full aspect-[21/9] md:aspect-[21/10] bg-gray-300 relative overflow-hidden">
+        <img
+            alt="Editorial Campaign"
+            class="w-full h-full object-cover object-center"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3BpYvTuTymEyoVg4HSsE7Xq3GhDfqkYJe-cDx-UfWTn-Xk1SQ06t-lNpZQ5M1CivIAoEeiwVO6Zg7hRrK-mJo7z8lJcaJ_DAKp3eJEVESloXGKv6tl98nysq3UJZCLOtPhoXszUI6aJKRuV_XdkAhd7qQnB0ksMKIM27KPZdigs7C07ZQN30Oom2Ct1qnkXSG0Unp7pTrMZaktV5XFEFGgIbkBKsRBUv5bnLxMhO-8xp14EfctWg1WKGJiEZnGCSCgCE--THC10M"
+        />
+        <!-- Hero Text Overlay -->
+        <div class="absolute inset-0 flex flex-col justify-end p-8 md:p-16 bg-gradient-to-t from-black/60 via-transparent to-transparent">
+            <div class="max-w-xl text-white">
+                <h1 class="font-display text-6xl md:text-8xl font-bold uppercase leading-[0.85] tracking-tighter mb-4">
+                    SHOP<br />CATALOG
+                </h1>
+                <div class="flex items-center space-x-4">
+                    <p class="text-sm font-light max-w-xs text-gray-200">
+                        Explore our full collection of premium footwear.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

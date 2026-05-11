@@ -1,0 +1,26 @@
+---
+/**
+ * ShopPageFacade — single entry point composing every shop section.
+ * Follows the same facade pattern as LandingPageFacade.astro.
+ *
+ * Architecture:
+ *   ShopPageFacade
+ *     ├── ShopHero          (Astro — static editorial banner)
+ *     └── ShopCatalog       (React island — Zustand + TanStack Table)
+ *           ├── FilterSidebar  (category, color, price, stock toggles)
+ *           ├── ShopToolbar    (search, sort, view toggle)
+ *           ├── ProductCard[]  (grid mode)
+ *           ├── ProductRow[]   (list mode)
+ *           └── ShopPagination
+ */
+import ShopHero    from "./ShopHero.astro";
+import ShopCatalog from "./ShopCatalog";
+---
+
+<main id="shop-main">
+    <!-- Static editorial hero -->
+    <ShopHero />
+
+    <!-- React island: full catalog with Zustand state + TanStack Table -->
+    <ShopCatalog client:load />
+</main>

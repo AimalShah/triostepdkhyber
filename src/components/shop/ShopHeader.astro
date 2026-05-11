@@ -1,0 +1,41 @@
+---
+import CartDrawer from '../shop/ui/CartDrawer';
+
+const navLinks = [
+    { label: "Catalog",     href: "/shop" },
+    { label: "Collections", href: "#"     },
+    { label: "Sale",        href: "#"     },
+    { label: "About Brand", href: "#"     },
+] as const;
+---
+
+<!-- BEGIN: Shop Navigation -->
+<header class="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 py-4 flex justify-between items-center gap-4">
+
+        <!-- Logo -->
+        <a class="font-display text-xl font-bold tracking-tighter shrink-0 text-dark" href="/">CHLSEA</a>
+
+        <!-- Center nav -->
+        <nav class="hidden md:flex flex-1 justify-center gap-8 text-[11px] uppercase tracking-wider font-medium">
+            {navLinks.map(({ label, href }) => (
+                <a
+                    class={`hover:text-gray-500 transition-colors whitespace-nowrap text-dark
+                        ${Astro.url.pathname === href ? 'border-b border-dark pb-0.5' : ''}`}
+                    href={href}
+                >
+                    {label}
+                </a>
+            ))}
+        </nav>
+
+        <!-- Right actions: static links + React CartDrawer island -->
+        <div class="flex items-center gap-4 sm:gap-6 text-[11px] uppercase tracking-wider font-medium shrink-0">
+            <a class="hidden sm:inline hover:text-gray-500 transition-colors text-dark" href="#">Account</a>
+            <a class="hidden sm:inline hover:text-gray-500 transition-colors text-dark" href="#">Favorites</a>
+            <CartDrawer client:load />
+        </div>
+
+    </div>
+</header>
+<!-- END: Shop Navigation -->

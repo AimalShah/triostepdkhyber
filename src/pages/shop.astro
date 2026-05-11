@@ -1,0 +1,42 @@
+---
+import ShopHeader     from '../components/shop/ShopHeader.astro';
+import ShopPageFacade from '../components/shop/ShopPageFacade.astro';
+import SiteFooter     from '../components/landing/SiteFooter.astro';
+import '../styles/global.css';
+
+const title = "Shop – CHLSEA | Premium Footwear";
+const description = "Browse CHLSEA's full collection of handcrafted Chelsea boots, ankle boots, derbies, loafers and sneakers.";
+---
+
+<!doctype html>
+<html lang="en" class="scroll-pt-[4.5rem]">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    />
+</head>
+<body class="bg-white text-dark font-sans antialiased min-h-dvh overflow-x-hidden">
+
+    <!-- Shop-specific header with live CartDrawer -->
+    <ShopHeader />
+
+    <!-- Shop page: hero + catalog -->
+    <ShopPageFacade />
+
+    <!-- Shared footer -->
+    <SiteFooter />
+
+</body>
+</html>
