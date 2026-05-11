@@ -1,59 +1,141 @@
 ---
-import { CAMPAIGN_IMAGE_URL } from "../../data/products";
+const carouselData = [
+  {
+    image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2070&auto=format&fit=crop",
+    alt: "Heritage Collection Look 1"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1550614000-4b95d4ed6dfa?q=80&w=2070&auto=format&fit=crop",
+    alt: "Heritage Collection Look 2"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=2070&auto=format&fit=crop",
+    alt: "Heritage Collection Look 3"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1583391733958-d25e07fac04f?q=80&w=2070&auto=format&fit=crop",
+    alt: "Heritage Collection Look 4"
+  }
+];
 ---
 
-<!-- BEGIN: Hero Section -->
-<section class="w-full relative bg-red-400 max-w-[1440px]">
-    <div
-        data-animate-section
-        class="w-screen aspect-[16/9] md:aspect-[21/10] bg-red-300 relative overflow-hidden"
-    >
-        <img
-            class="w-full h-full object-cover object-top"
-            src={CAMPAIGN_IMAGE_URL}
-            alt="Editorial Campaign"
-            width={2400}
-            height={1140}
-            fetchpriority="high"
-            decoding="async"
-        />
-        <!-- Hero Text Overlay -->
-        <div
-            class="absolute inset-0 flex flex-col justify-end p-8 md:p-16 bg-gradient-to-t from-black/60 via-transparent to-transparent"
-        >
-            <div class="max-w-xl text-white">
-                <h1
-                    class="font-display text-5xl sm:text-6xl md:text-8xl font-bold uppercase leading-[0.85] tracking-tighter mb-4 overflow-hidden"
-                >
-                    <span class="block overflow-hidden">
-                        <span data-animate="hero-title-1" class="block"
-                            >URBAN</span
-                        >
-                    </span>
-                    <span class="block overflow-hidden">
-                        <span data-animate="hero-title-2" class="block"
-                            >CLASSIC</span
-                        >
-                    </span>
-                </h1>
-                <div
-                    class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6"
-                >
-                    <p
-                        data-animate="hero-caption"
-                        class="text-sm font-light max-w-xs"
-                    >
-                        New collection for comfort and style in the city.
-                    </p>
-                    <a
-                        data-animate="hero-cta"
-                        class="inline-flex text-xs uppercase tracking-widest border-b border-white pb-1 hover:text-gray-300 transition-colors items-center w-fit mt-2 sm:mt-0 sm:ml-2"
-                        href="#"
-                    >
-                        Watch <span class="ml-2">↗</span>
-                    </a>
-                </div>
+<section class="w-full relative bg-[#1c2024] text-[#f4f4f5] overflow-hidden min-h-screen flex items-center pt-20 pb-12 rounded-b-[2.5rem]">
+  <div class="max-w-[1800px] mx-auto w-full px-6 md:px-12 lg:px-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+    
+    <!-- Left: Main Image Swiper (Cols 1-5) -->
+    <div class="lg:col-span-5 h-[50vh] md:h-[60vh] lg:h-[75vh] w-full relative group">
+      <div class="swiper main-hero-swiper w-full h-full rounded-sm overflow-hidden">
+        <div class="swiper-wrapper">
+          {carouselData.map((item) => (
+            <div class="swiper-slide">
+              <img 
+                class="w-full h-full object-cover object-center" 
+                src={item.image} 
+                alt={item.alt}
+                loading="eager"
+              />
             </div>
+          ))}
         </div>
+      </div>
     </div>
+
+    <!-- Center: Typography and CTA (Cols 6-10) -->
+    <div class="lg:col-span-6 flex flex-col justify-center px-2 lg:px-8 z-10 py-8 lg:py-0">
+      <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] font-bold uppercase leading-[0.95] tracking-tight mb-6 text-[#eae9e4]">
+        TIMELESS CRAFT,<br/>MODERN SOUL.
+      </h1>
+      <p class="text-[#a1a1aa] text-base md:text-lg max-w-lg mb-10 font-light leading-relaxed">
+        Discover our new collection of heritage-inspired clothing, redefined for today.
+      </p>
+      <a href="/collection" class="bg-[#b46d54] hover:bg-[#9c5e48] text-white px-8 py-4 rounded-full w-fit text-sm font-medium tracking-wide transition-colors duration-300 uppercase shadow-lg shadow-[#b46d54]/20">
+        Explore Collection
+      </a>
+    </div>
+
+    <!-- Right: Thumbnails (Col 12) -->
+    <div class="hidden lg:flex lg:col-span-1 flex-col justify-center items-center h-[75vh] relative ml-auto pr-4">
+      <button class="thumb-prev mb-6 text-[#71717a] hover:text-[#f4f4f5] transition-colors p-2" aria-label="Previous Slide">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+        </svg>
+      </button>
+      
+      <div class="swiper thumb-hero-swiper h-[50vh] w-24">
+        <div class="swiper-wrapper">
+          {carouselData.map((item) => (
+            <div class="swiper-slide h-auto cursor-pointer rounded-sm overflow-hidden border border-transparent transition-all duration-300 opacity-60 hover:opacity-100">
+              <div class="aspect-[3/4] w-full">
+                <img class="w-full h-full object-cover object-center" src={item.image} alt={`${item.alt} thumbnail`} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <button class="thumb-next mt-6 text-[#71717a] hover:text-[#f4f4f5] transition-colors p-2" aria-label="Next Slide">
+         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
 </section>
+
+<style>
+  /* Swiper custom styles */
+  .thumb-hero-swiper .swiper-slide-thumb-active {
+    opacity: 1;
+    border-color: #b46d54; /* Highlight color for active thumbnail */
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Thumbs, EffectFade, Autoplay } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/effect-fade';
+  import 'swiper/css/navigation';
+  import 'swiper/css/thumbs';
+
+  function initHeroSwipers() {
+    const thumbSwiperEl = document.querySelector('.thumb-hero-swiper');
+    const mainSwiperEl = document.querySelector('.main-hero-swiper');
+
+    if (!thumbSwiperEl || !mainSwiperEl) return;
+
+    const thumbSwiper = new Swiper('.thumb-hero-swiper', {
+      modules: [Navigation],
+      direction: 'vertical',
+      spaceBetween: 16,
+      slidesPerView: 4,
+      freeMode: true,
+      watchSlidesProgress: true,
+      navigation: {
+        nextEl: '.thumb-next',
+        prevEl: '.thumb-prev',
+      },
+    });
+
+    new Swiper('.main-hero-swiper', {
+      modules: [Thumbs, EffectFade, Autoplay],
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      thumbs: {
+        swiper: thumbSwiper,
+      },
+    });
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initHeroSwipers);
+  
+  // Re-initialize if using view transitions
+  document.addEventListener('astro:page-load', initHeroSwipers);
+</script>
