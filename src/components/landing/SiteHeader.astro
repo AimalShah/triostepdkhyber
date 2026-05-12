@@ -1,4 +1,6 @@
 ---
+import logoImg from "../../assets/images/1000151679.jpg.jpeg";
+
 const navLinks = [
     { label: "Catalog", href: "/shop" },
     { label: "Collections", href: "#" },
@@ -21,10 +23,9 @@ const utilLinks = [
     <div
         class="max-w-[1440px] mx-auto px-4 sm:px-6 py-4 flex justify-between items-center gap-4"
     >
-        <a
-            class="font-display text-xl font-bold tracking-tighter shrink-0"
-            href="/">CHLSEA</a
-        >
+        <a class="shrink-0" href="/">
+            <img src={logoImg.src} alt="Triostepdkhyber Logo" class="h-10 w-auto object-contain" />
+        </a>
         <nav
             class="hidden md:flex flex-1 justify-center gap-8 text-[11px] uppercase tracking-wider font-medium"
         >

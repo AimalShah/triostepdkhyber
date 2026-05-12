@@ -1,43 +1,27 @@
 ---
-import BookmarkButton from './BookmarkButton.astro';
+import WishlistToggle from '../shop/ui/WishlistToggle';
 
 export interface Props {
+	id: number;
 	title: string;
 	priceLabel: string;
 	imageSrc: string;
 	imageAlt: string;
-	bottomBorderMd?: boolean;
+	bottomBorderMd?: boolean; // Kept for backwards compatibility but ignored in UI
 }
 
 const {
+	id,
 	title,
 	priceLabel,
 	imageSrc,
 	imageAlt,
-	bottomBorderMd = true,
 } = Astro.props;
 ---
 
-<div class:list={[
-  'relative group p-6 flex flex-col h-full',
-  bottomBorderMd && 'border-b md:border-b-0 border-gray-200',
-]}
->
-  <BookmarkButton class="absolute top-4 right-4" />
-  <div class="aspect-[3/4] bg-white mb-4 w-full flex items-center justify-center p-4">
-    <img class="w-full h-full object-contain mix-blend-multiply" src={imageSrc} alt={imageAlt} loading="lazy" />
-  </div>
-  <div class="mt-auto border-t border-gray-200 pt-4 flex justify-between items-end">
-    <div>
-      <h3 class="text-xs font-bold uppercase tracking-tight mb-1">{title}</h3>
-      <p class="text-[11px] text-gray-500">{priceLabel}</p>
+<div class="relative group flex flex-col w-full h-full">
+  <div class="relative aspect-[3/4] overflow-hidden bg-[#F2F2F2] mb-4">
+    <div class="absolute top-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+      <WishlistToggle productId={id} client:load />
     </div>
-    <button
-      class="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-lg leading-none hover:bg-gray-800 transition-colors"
-      type="button"
-      aria-label="Add to cart"
-    >
-      +
-    </button>
-  </div>
 </div>

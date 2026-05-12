@@ -1,7 +1,161 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/landing/SiteHeader.astro";
+import SiteFooter from "../components/landing/SiteFooter.astro";
+import heroImg from "../assets/images/1000151766.jpg.jpeg";
+import storyImg from "../assets/images/1000151768.jpg.jpeg";
 ---
 
-<Layout title="About">
-    <div>ABOUT SECTION</div>
+<Layout title="About - Triostepdkhyber">
+    <SiteHeader />
+    <main class="w-full bg-[#f8f8f8] text-dark relative">
+        <!-- Hero Section -->
+        <section class="relative w-full h-[80vh] overflow-hidden flex items-center justify-center">
+            <div class="absolute inset-0 z-0 bg-dark">
+                <img src={heroImg.src} alt="Triostepdkhyber Workshop" class="w-full h-full object-cover opacity-60 mix-blend-overlay gsap-parallax" />
+            </div>
+            <div class="relative z-10 text-center px-4">
+                <h1 class="font-display text-5xl md:text-8xl font-bold uppercase tracking-tighter text-white drop-shadow-2xl gsap-fade-up">
+                    Crafting <br /> Legacy
+                </h1>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="max-w-7xl mx-auto px-6 py-24 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="gsap-fade-up">
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-dark mb-6">The Triostepdkhyber Story</h2>
+                <div class="space-y-6 text-gray-600 text-lg font-light leading-relaxed">
+                    <p>
+                        Triostepdkhyber was born from a singular vision: to create the perfect boot. What started as a passion for classic silhouettes has evolved into a comprehensive collection of premium footwear, meticulously designed for those who appreciate both form and function.
+                    </p>
+                    <p>
+                        Every stitch, every cut of leather, and every sole is a testament to our unwavering commitment to quality. We source only the finest full-grain leathers and employ time-honored construction techniques to ensure that our footwear doesn't just endure, but improves with age.
+                    </p>
+                </div>
+            </div>
+            <div class="aspect-[4/5] overflow-hidden bg-gray-200 gsap-fade-up relative">
+                <img src={storyImg.src} alt="Craftsmanship" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+            </div>
+        </section>
+
+        <!-- Marquee Testimonials -->
+        <section class="w-full bg-dark py-24 overflow-hidden relative text-white">
+            <div class="text-center mb-16 px-4 gsap-fade-up">
+                <h2 class="font-display text-3xl md:text-5xl font-bold uppercase tracking-tight">Walk With Us</h2>
+                <p class="text-gray-400 max-w-xl mx-auto mt-4 text-xl font-light">Don't just take our word for it. Hear from those who step in Triostepdkhyber every day.</p>
+            </div>
+            
+            <div class="relative flex overflow-x-hidden group">
+                <div class="flex animate-marquee-about py-8 group-hover:[animation-play-state:paused]">
+                    {
+                        [
+                            { name: "Sarah L.", role: "Architect", text: "Finding footwear that looks professional but feels comfortable for 10 hours on a site was impossible until Triostepdkhyber." },
+                            { name: "James M.", role: "Designer", text: "The attention to detail is staggering. The patina these develop over time is absolutely gorgeous." },
+                            { name: "Elena R.", role: "Creative Director", text: "I own three pairs now. They are my absolute go-to for client pitches and weekend wear alike." },
+                            { name: "David T.", role: "Photographer", text: "Durability meets high fashion. They survived a month-long shoot in Iceland and still look immaculate." },
+                        ].map(t => (
+                            <div class="w-80 md:w-96 flex-shrink-0 mx-4 p-8 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl">
+                                <p class="text-gray-300 text-lg italic mb-6 leading-relaxed">"{t.text}"</p>
+                                <div>
+                                    <h4 class="font-bold text-white tracking-wider uppercase text-sm">{t.name}</h4>
+                                    <p class="text-gray-500 text-xs tracking-widest uppercase">{t.role}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+                <!-- Duplicate for infinite loop -->
+                <div class="flex animate-marquee-about py-8 group-hover:[animation-play-state:paused]" aria-hidden="true">
+                     {
+                        [
+                            { name: "Sarah L.", role: "Architect", text: "Finding footwear that looks professional but feels comfortable for 10 hours on a site was impossible until Triostepdkhyber." },
+                            { name: "James M.", role: "Designer", text: "The attention to detail is staggering. The patina these develop over time is absolutely gorgeous." },
+                            { name: "Elena R.", role: "Creative Director", text: "I own three pairs now. They are my absolute go-to for client pitches and weekend wear alike." },
+                            { name: "David T.", role: "Photographer", text: "Durability meets high fashion. They survived a month-long shoot in Iceland and still look immaculate." },
+                        ].map(t => (
+                            <div class="w-80 md:w-96 flex-shrink-0 mx-4 p-8 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl">
+                                <p class="text-gray-300 text-lg italic mb-6 leading-relaxed">"{t.text}"</p>
+                                <div>
+                                    <h4 class="font-bold text-white tracking-wider uppercase text-sm">{t.name}</h4>
+                                    <p class="text-gray-500 text-xs tracking-widest uppercase">{t.role}</p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+    </main>
+    <SiteFooter />
 </Layout>
+
+<style>
+    @keyframes marquee-about {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-100%); }
+    }
+    .animate-marquee-about {
+        animation: marquee-about 35s linear infinite;
+    }
+</style>
+
+<script>
+    import gsap from "gsap";
+    import ScrollTrigger from "gsap/ScrollTrigger";
+    import Lenis from "lenis";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    function initAbout() {
+        // Smooth scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+        });
+
+        function raf(time: number) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Hero Parallax
+        gsap.to(".gsap-parallax", {
+            yPercent: 30,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".gsap-parallax",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Fade Up Elements
+        const fadeElements = document.querySelectorAll(".gsap-fade-up");
+        fadeElements.forEach((el) => {
+            gsap.fromTo(el, 
+                { y: 50, opacity: 0 },
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    duration: 1, 
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+    }
+
+    // Run on both standard load and Astro page transitions
+    document.addEventListener("DOMContentLoaded", initAbout);
+    document.addEventListener("astro:page-load", initAbout);
+</script>

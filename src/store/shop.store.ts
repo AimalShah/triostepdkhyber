@@ -4,6 +4,7 @@
 // ──────────────────────────────────────────────────────────────────────────────
 
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import { PRODUCTS, type Product } from '../data/shop.products';
 
 export interface CartItem {
@@ -54,62 +55,69 @@ interface ShopState {
   getCartTotal: () => number;
 }
 
-export const useShopStore = create<ShopState>((set, get) => ({
-  // Filter defaults
-  searchQuery:    '',
-  activeCategory: 'All',
-  activeColor:    'All',
-  priceRange:     [0, 35000],
-  sortBy:         'default',
-  inStockOnly:    false,
-  onSaleOnly:     false,
-  viewMode:       'grid',
-  currentPage:    1,
-  pageSize:       9,
+export const useShopStore = create<ShopState>()(
+  persist(
+    (set, get) => ({
+      // Filter defaults
+      searchQuery:    '',
+      activeCategory: 'All',
+      activeColor:    'All',
+      priceRange:     [0, 35000],
+      sortBy:         'default',
+      inStockOnly:    false,
+      onSaleOnly:     false,
+      viewMode:       'grid',
+      currentPage:    1,
+      pageSize:       9,
 
-  // Cart / wishlist defaults
-  cart:     [],
-  wishlist: [],
+      // Cart / wishlist defaults
+      cart:     [],
+      wishlist: [],
 
-  // Filter actions (always reset page)
-  setSearch:      (q) => set({ searchQuery: q,    currentPage: 1 }),
-  setCategory:    (c) => set({ activeCategory: c, currentPage: 1 }),
-  setColor:       (c) => set({ activeColor: c,    currentPage: 1 }),
-  setPriceRange:  (r) => set({ priceRange: r,     currentPage: 1 }),
-  setSortBy:      (s) => set({ sortBy: s }),
-  setInStockOnly: (v) => set({ inStockOnly: v,    currentPage: 1 }),
-  setOnSaleOnly:  (v) => set({ onSaleOnly: v,     currentPage: 1 }),
-  setViewMode:    (m) => set({ viewMode: m }),
-  setPage:        (p) => set({ currentPage: p }),
+      // Filter actions (always reset page)
+      setSearch:      (q) => set({ searchQuery: q,    currentPage: 1 }),
+      setCategory:    (c) => set({ activeCategory: c, currentPage: 1 }),
+      setColor:       (c) => set({ activeColor: c,    currentPage: 1 }),
+      setPriceRange:  (r) => set({ priceRange: r,     currentPage: 1 }),
+      setSortBy:      (s) => set({ sortBy: s }),
+      setInStockOnly: (v) => set({ inStockOnly: v,    currentPage: 1 }),
+      setOnSaleOnly:  (v) => set({ onSaleOnly: v,     currentPage: 1 }),
+      setViewMode:    (m) => set({ viewMode: m }),
+      setPage:        (p) => set({ currentPage: p }),
 
-  clearFilters: () => set({
-    searchQuery: '', activeCategory: 'All', activeColor: 'All',
-    priceRange: [0, 35000], sortBy: 'default',
-    inStockOnly: false, onSaleOnly: false, currentPage: 1,
-  }),
+      clearFilters: () => set({
+        searchQuery: '', activeCategory: 'All', activeColor: 'All',
+        priceRange: [0, 35000], sortBy: 'default',
+        inStockOnly: false, onSaleOnly: false, currentPage: 1,
+      }),
 
-  toggleWishlist: (id) => set((s) => ({
-    wishlist: s.wishlist.includes(id)
-      ? s.wishlist.filter((x) => x !== id)
-      : [...s.wishlist, id],
-  })),
+      toggleWishlist: (id) => set((s) => ({
+        wishlist: s.wishlist.includes(id)
+          ? s.wishlist.filter((x) => x !== id)
+          : [...s.wishlist, id],
+      })),
 
-  addToCart: (product, size) => set((s) => {
-    const idx = s.cart.findIndex((i) => i.product.id === product.id && i.size === size);
-    if (idx > -1) {
-      const cart = [...s.cart];
-      cart[idx] = { ...cart[idx], qty: cart[idx].qty + 1 };
-      return { cart };
+      addToCart: (product, size) => set((s) => {
+        const idx = s.cart.findIndex((i) => i.product.id === product.id && i.size === size);
+        if (idx > -1) {
+          const cart = [...s.cart];
+          cart[idx] = { ...cart[idx], qty: cart[idx].qty + 1 };
+          return { cart };
+        }
+        return { cart: [...s.cart, { product, size, qty: 1 }] };
+      }),
+
+      removeFromCart: (productId, size) => set((s) => ({
+        cart: s.cart.filter((i) => !(i.product.id === productId && i.size === size)),
+      })),
+
+      clearCart: () => set({ cart: [] }),
+
+      getCartCount: () => get().cart.reduce((s, i) => s + i.qty, 0),
+      getCartTotal: () => get().cart.reduce((s, i) => s + i.product.price * i.qty, 0),
+    }),
+    {
+      name: 'triostepdkhyber-shop-storage',
     }
-    return { cart: [...s.cart, { product, size, qty: 1 }] };
-  }),
-
-  removeFromCart: (productId, size) => set((s) => ({
-    cart: s.cart.filter((i) => !(i.product.id === productId && i.size === size)),
-  })),
-
-  clearCart: () => set({ cart: [] }),
-
-  getCartCount: () => get().cart.reduce((s, i) => s + i.qty, 0),
-  getCartTotal: () => get().cart.reduce((s, i) => s + i.product.price * i.qty, 0),
-}));
+  )
+);
