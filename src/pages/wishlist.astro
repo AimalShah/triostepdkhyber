@@ -1,14 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SiteHeader from '../components/landing/SiteHeader.astro';
-import SiteFooter from '../components/landing/SiteFooter.astro';
 import WishlistPageReact from '../components/shop/WishlistPage';
 ---
 
 <Layout title="Wishlist - Triostepdkhyber">
-  <SiteHeader />
+<Layout title="Wishlist - Triostepdkhyber">
   <main class="min-h-[70vh] bg-gray-50 pt-10 pb-20">
     <WishlistPageReact client:load />
   </main>
-  <SiteFooter />
 </Layout>

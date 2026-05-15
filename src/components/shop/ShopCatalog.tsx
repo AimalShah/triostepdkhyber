@@ -91,13 +91,13 @@ export default function ShopCatalog() {
           {rows.length === 0 ? (
             <EmptyState />
           ) : viewMode === 'grid' ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 border-l border-t border-gray-100">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-16">
               {rows.map((row) => (
                 <ProductCard key={row.original.id} product={row.original} />
               ))}
             </div>
           ) : (
-            <div className="border-t border-gray-100">
+            <div className="flex flex-col gap-8">
               {rows.map((row) => (
                 <ProductRow key={row.original.id} product={row.original} />
               ))}

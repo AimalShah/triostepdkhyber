@@ -2,31 +2,107 @@
 import ProductCard from './ProductCard.astro';
 import NewArrivalsMobileSwiper from './NewArrivalsMobileSwiper.astro';
 
-import { PRODUCTS } from '../../data/products';
+import { PRODUCTS } from '../../data/shop.products';
+import { fmtPrice } from '../../components/shop/ui/ShopAtoms';
 ---
 
 <!-- BEGIN: New Arrivals -->
-<section data-animate-section class="max-w-[1440px] mx-auto px-4 sm:px-6 py-16 md:py-24">
-	<div class="flex justify-between items-end mb-8 gap-4">
-		<h2 class="font-display text-2xl md:text-3xl font-bold uppercase tracking-tight">New Arrivals</h2>
-		<a class="text-[11px] uppercase tracking-wider hover:text-gray-500 transition-colors inline-flex items-center shrink-0" href="#">
-			See All <span class="ml-1">↗</span>
-		</a>
-	</div>
+<section data-animate-section class="w-full bg-[#FAFAFA] py-24 md:py-32 overflow-hidden">
+    <div class="max-w-[1440px] mx-auto px-6">
+        
+        {/* Section Header */}
+        <div class="text-center mb-16 md:mb-24">
+            <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-black mb-6 block gsap-reveal">Just Landed</span>
+            <h2 class="font-display text-4xl md:text-7xl font-bold uppercase tracking-tighter text-dark mb-10 gsap-reveal">
+                New <span class="text-gray-300">Arrivals</span>
+            </h2>
+            
+            {/* Category Filter - Purely Visual for Professionalism */}
+            <div class="flex flex-wrap justify-center gap-8 md:gap-12 mt-8 gsap-reveal">
+                {['All Collections', 'Chelsea', 'Derby', 'Sneakers'].map((cat, i) => (
+                    <button class={`text-[10px] uppercase tracking-[0.3em] font-black transition-all border-b-2 pb-2 ${i === 0 ? 'border-dark text-dark' : 'border-transparent text-gray-400 hover:text-dark'}`}>
+                        {cat}
+                    </button>
+                ))}
+            </div>
+        </div>
 
-	<NewArrivalsMobileSwiper products={PRODUCTS} />
+        {/* Mobile View */}
+        <NewArrivalsMobileSwiper products={PRODUCTS} />
 
-	<div class="hidden md:grid md:grid-cols-4 border border-gray-200 product-grid-borders">
-		{
-			PRODUCTS.map((product) => (
-				<ProductCard
-					title={product.title}
-					priceLabel={product.price}
-					imageSrc={product.image}
-					imageAlt={product.alt}
-				/>
-			))
-		}
-	</div>
+        {/* Desktop Grid - Refined Spacing */}
+        <div class="hidden md:grid md:grid-cols-4 gap-x-8 gap-y-16 gsap-reveal-grid">
+            {
+                PRODUCTS.slice(0, 8).map((product) => (
+                    <div class="gsap-product-card">
+                        <ProductCard
+                            id={product.id}
+                            title={product.name}
+                            priceLabel={fmtPrice(product.price)}
+                            imageSrc={product.image}
+                            imageAlt={product.name}
+                        />
+                    </div>
+                ))
+            }
+        </div>
+
+        {/* Bottom Action */}
+        <div class="mt-24 text-center gsap-reveal">
+            <a href="/shop" class="inline-flex items-center gap-4 group">
+                <span class="text-[11px] uppercase tracking-[0.4em] font-black text-dark group-hover:text-gray-500 transition-colors">
+                    Explore Full Catalog
+                </span>
+                <div class="w-12 h-px bg-dark group-hover:w-20 transition-all group-hover:bg-gray-400"></div>
+                <span class="text-sm group-hover:translate-x-2 transition-transform">→</span>
+            </a>
+        </div>
+    </div>
 </section>
+
+<script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    function initNewArrivals() {
+        const reveals = document.querySelectorAll('.gsap-reveal');
+        reveals.forEach((el) => {
+            gsap.fromTo(el, 
+                { y: 30, opacity: 0 },
+                { 
+                    y: 0, 
+                    opacity: 1, 
+                    duration: 1, 
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 90%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+
+        // Staggered grid reveal
+        gsap.fromTo(".gsap-product-card", 
+            { y: 50, opacity: 0 },
+            { 
+                y: 0, 
+                opacity: 1, 
+                duration: 1.2, 
+                stagger: 0.1,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: ".gsap-reveal-grid",
+                    start: "top 80%",
+                }
+            }
+        );
+    }
+
+    document.addEventListener('DOMContentLoaded', initNewArrivals);
+    document.addEventListener('astro:page-load', initNewArrivals);
+</script>
 <!-- END: New Arrivals -->

@@ -20,34 +20,36 @@ const { products } = Astro.props;
     >
         <div class="swiper-wrapper">
             {
-                products.map((product, idx) => (
+                products.slice(0, 8).map((product, idx) => (
                     <div
                         class:list={[
                             "swiper-slide !h-auto box-border",
-                            idx % 2 === 0 ? "border-r border-gray-200" : "",
-                            idx >= 2 ? "border-t border-gray-200" : "",
+                            idx % 2 === 0 ? "border-r border-gray-100" : "",
+                            idx >= 2 ? "border-t border-gray-100" : "",
                         ]}
                     >
-                        <div class="relative group flex flex-col w-full h-full p-2 bg-white">
-                            <div class="relative aspect-[4/5] overflow-hidden bg-[#F8F8F8] mb-3">
-                                <div class="absolute top-2 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="relative group flex flex-col w-full h-full p-4 bg-white transition-all">
+                            <div class="relative aspect-[4/5] overflow-hidden bg-[#F9F9F9] mb-4">
+                                <div class="absolute top-3 right-3 z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-2 group-hover:translate-x-0">
                                     <WishlistToggle productId={product.id} client:load />
                                 </div>
                                 
-                                <a href={`/product/${product.id}`} class="block w-full h-full">
-                                    <img class="w-full h-full object-cover mix-blend-multiply transition-transform duration-[1.5s] ease-out group-hover:scale-110" src={product.image} alt={product.name} loading="lazy" />
+                                <a href={`/product/${product.id}`} class="block w-full h-full relative">
+                                    <img class="w-full h-full object-cover transition-all duration-[1.5s] ease-out group-hover:scale-110" src={product.image} alt={product.name} loading="lazy" />
+                                    <div class="absolute inset-0 bg-dark/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                 </a>
 
-                                <a href={`/product/${product.id}`} class="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-20 block text-center no-underline">
-                                    <div class="w-full bg-dark/95 backdrop-blur-md text-white py-3 text-[9px] uppercase tracking-[0.2em] font-bold hover:bg-black transition-colors">
-                                      View Details
+                                <a href={`/product/${product.id}`} class="absolute bottom-0 left-0 right-0 p-2 translate-y-full group-hover:translate-y-0 transition-transform duration-500 z-20 block text-center no-underline">
+                                    <div class="w-full bg-white text-dark py-3 text-[8px] uppercase tracking-[0.2em] font-black hover:bg-dark hover:text-white transition-all shadow-lg border border-gray-100">
+                                      Quick View +
                                     </div>
                                 </a>
                             </div>
                             
-                            <a href={`/product/${product.id}`} class="flex flex-col text-center px-1 pb-2 no-underline text-inherit group-hover:text-gray-600 transition-colors z-10">
-                                <h3 class="text-[11px] font-bold uppercase tracking-widest text-dark mb-1 truncate px-2">{product.name}</h3>
-                                <p class="text-[11px] font-bold tracking-widest text-gray-600">{fmtPrice(product.price)}</p>
+                            <a href={`/product/${product.id}`} class="flex flex-col text-left no-underline text-inherit group-hover:text-gray-500 transition-colors z-10">
+                                <p class="text-[8px] uppercase tracking-[0.25em] text-gray-400 font-bold mb-1">New Arrival</p>
+                                <h3 class="text-[12px] font-bold tracking-tight text-dark mb-2 truncate">{product.name}</h3>
+                                <p class="text-[12px] font-bold tracking-tighter text-dark">{fmtPrice(product.price)}</p>
                             </a>
                         </div>
                     </div>

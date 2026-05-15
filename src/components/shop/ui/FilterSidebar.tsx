@@ -1,4 +1,4 @@
-// ─── FilterSidebar ────────────────────────────────────────────────────────────
+import React from 'react';
 import { CATEGORIES, COLORS } from '../../../data/shop.products';
 import { useShopStore } from '../../../store/shop.store';
 import { COLOR_HEX } from './ShopAtoms';
@@ -6,8 +6,8 @@ import { COLOR_HEX } from './ShopAtoms';
 // ── Sub-component: FilterSection ──────────────────────────────────────────────
 function FilterSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="mb-6">
-      <h3 className="text-[10px] uppercase tracking-[0.12em] text-gray-400 font-semibold mb-3">
+    <div className="mb-12">
+      <h3 className="text-[11px] uppercase tracking-[0.25em] text-dark font-black mb-6">
         {title}
       </h3>
       {children}
@@ -20,19 +20,19 @@ function ToggleRow({ label, checked, onChange }: {
   label: string; checked: boolean; onChange: (v: boolean) => void;
 }) {
   return (
-    <label className="flex items-center gap-2.5 cursor-pointer mb-3 group">
-      <div
-        onClick={() => onChange(!checked)}
-        className={`relative w-9 h-5 rounded-full transition-colors duration-200 flex-shrink-0
-          ${checked ? 'bg-dark' : 'bg-gray-200'}`}
-      >
-        <span className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-sm
-          transition-transform duration-200 ${checked ? 'translate-x-4' : ''}`} />
-      </div>
-      <span className="text-[10px] uppercase tracking-widest font-medium text-gray-600
+    <label className="flex items-center justify-between cursor-pointer mb-4 group">
+      <span className="text-[10px] uppercase tracking-[0.15em] font-bold text-gray-400
         group-hover:text-dark transition-colors">
         {label}
       </span>
+      <div
+        onClick={() => onChange(!checked)}
+        className={`relative w-8 h-4 transition-colors duration-300
+          ${checked ? 'bg-dark' : 'bg-gray-100'}`}
+      >
+        <span className={`absolute top-0 left-0 w-4 h-4 bg-dark shadow-sm
+          transition-transform duration-300 ${checked ? 'translate-x-4 bg-white border border-dark' : 'bg-dark opacity-20'}`} />
+      </div>
     </label>
   );
 }
@@ -50,29 +50,29 @@ export default function FilterSidebar() {
     inStockOnly || onSaleOnly;
 
   return (
-    <aside className="w-full border-r border-gray-100 pr-6 py-6">
+    <aside className="w-full pr-8 py-2 sticky top-[100px]">
       {/* Header */}
-      <div className="flex justify-between items-center pb-4 mb-5 border-b border-gray-100">
-        <h2 className="font-display text-sm font-semibold uppercase tracking-wide">Filters</h2>
+      <div className="flex justify-between items-end pb-8 mb-10 border-b border-gray-100">
+        <h2 className="text-2xl font-bold uppercase tracking-tighter">Filters</h2>
         {hasActiveFilters && (
           <button onClick={clearFilters}
-            className="text-[9px] uppercase tracking-widest text-gray-400
-              hover:text-dark border-b border-transparent hover:border-dark transition-all">
-            Clear all
+            className="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold
+              hover:text-dark border-b border-gray-200 hover:border-dark transition-all pb-0.5">
+            Reset
           </button>
         )}
       </div>
 
       {/* Category */}
-      <FilterSection title="Category">
-        <div className="flex flex-col gap-1">
+      <FilterSection title="Collections">
+        <div className="flex flex-col items-start gap-4">
           {CATEGORIES.map((c) => (
             <button key={c} onClick={() => setCategory(c)}
-              className={`text-left text-[11px] py-1.5 px-3 rounded transition-all duration-150
-                uppercase tracking-wider font-medium
+              className={`text-left text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-300
+                relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1.5px] after:bg-dark after:transition-all
                 ${activeCategory === c
-                  ? 'bg-dark text-white'
-                  : 'text-gray-500 hover:text-dark hover:bg-gray-50'}`}>
+                  ? 'text-dark after:w-full'
+                  : 'text-gray-400 hover:text-dark after:w-0'}`}>
               {c}
             </button>
           ))}
@@ -80,17 +80,17 @@ export default function FilterSidebar() {
       </FilterSection>
 
       {/* Color */}
-      <FilterSection title="Color">
-        <div className="flex flex-wrap gap-2">
+      <FilterSection title="Palette">
+        <div className="grid grid-cols-5 gap-3">
           {COLORS.map((c) => (
             <button key={c} onClick={() => setColor(c)} title={c}
-              className={`w-7 h-7 rounded-full border-2 transition-all duration-150 flex items-center justify-center
+              className={`aspect-square transition-all duration-300 flex items-center justify-center border
                 ${activeColor === c
-                  ? 'border-dark shadow-[0_0_0_2px_white,0_0_0_4px_#1a1a1a]'
-                  : 'border-transparent hover:scale-110'}`}
-              style={{ background: c === 'All' ? 'conic-gradient(red,orange,yellow,green,blue,violet,red)' : COLOR_HEX[c] }}>
+                  ? 'border-dark scale-110 shadow-lg'
+                  : 'border-transparent hover:border-gray-200'}`}
+              style={{ background: c === 'All' ? '#F3F4F6' : COLOR_HEX[c] }}>
               {c === 'All' && (
-                <span className="text-[7px] font-bold text-white drop-shadow">All</span>
+                <span className="text-[7px] font-black uppercase text-dark opacity-40">All</span>
               )}
             </button>
           ))}
@@ -98,25 +98,27 @@ export default function FilterSidebar() {
       </FilterSection>
 
       {/* Price Range */}
-      <FilterSection title="Price Range">
-        <div className="flex justify-between text-[10px] text-gray-400 mb-2">
-          <span>{new Intl.NumberFormat('ru-RU').format(priceRange[0])} ₽</span>
-          <span>{new Intl.NumberFormat('ru-RU').format(priceRange[1])} ₽</span>
+      <FilterSection title="Price">
+        <div className="space-y-6">
+          <div className="flex justify-between text-[11px] font-bold tracking-tighter text-dark italic">
+            <span>{new Intl.NumberFormat('ru-RU').format(priceRange[0])} ₽</span>
+            <span>{new Intl.NumberFormat('ru-RU').format(priceRange[1])} ₽</span>
+          </div>
+          <div className="relative h-6 flex items-center">
+             <input type="range" min={0} max={35000} step={500}
+                value={priceRange[1]}
+                onChange={(e) => setPriceRange([priceRange[0], +e.target.value])}
+                className="w-full h-[2px] appearance-none bg-gray-100 accent-dark cursor-pointer" />
+          </div>
         </div>
-        <input type="range" min={0} max={35000} step={500}
-          value={priceRange[0]}
-          onChange={(e) => setPriceRange([+e.target.value, priceRange[1]])}
-          className="w-full h-0.5 appearance-none bg-gray-200 accent-dark mb-2 cursor-pointer" />
-        <input type="range" min={0} max={35000} step={500}
-          value={priceRange[1]}
-          onChange={(e) => setPriceRange([priceRange[0], +e.target.value])}
-          className="w-full h-0.5 appearance-none bg-gray-200 accent-dark cursor-pointer" />
       </FilterSection>
 
       {/* Availability */}
       <FilterSection title="Availability">
-        <ToggleRow label="In Stock Only"  checked={inStockOnly} onChange={setInStockOnly} />
-        <ToggleRow label="On Sale Only"   checked={onSaleOnly}  onChange={setOnSaleOnly}  />
+        <div className="space-y-2">
+            <ToggleRow label="In Stock"  checked={inStockOnly} onChange={setInStockOnly} />
+            <ToggleRow label="On Sale"   checked={onSaleOnly}  onChange={setOnSaleOnly}  />
+        </div>
       </FilterSection>
     </aside>
   );

@@ -23,59 +23,73 @@ export default function ShopToolbar({ totalFiltered }: { totalFiltered: number }
   const { searchQuery, sortBy, viewMode, setSearch, setSortBy, setViewMode } = useShopStore();
 
   return (
-    <div className="flex flex-wrap items-center gap-3 py-4 border-b border-gray-100">
+    <div className="flex flex-wrap items-center gap-6 py-6 mb-8 border-b border-gray-100">
       {/* Search */}
-      <div className="relative flex-1 min-w-[180px] max-w-xs">
-        <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400 pointer-events-none"
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+      <div className="relative flex-1 min-w-[240px] max-w-sm group">
+        <svg className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none transition-colors group-focus-within:text-dark"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
         </svg>
         <input
           type="search"
-          placeholder="Search products, SKU…"
+          placeholder="SEARCH ARCHIVE..."
           value={searchQuery}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full pl-9 pr-4 py-2 text-[11px] bg-gray-50 border border-gray-200
-            rounded-sm outline-none focus:border-dark focus:bg-white transition-colors
-            uppercase placeholder:normal-case placeholder:capitalize"
+          className="w-full pl-8 pr-4 py-3 text-[10px] bg-transparent outline-none
+            uppercase tracking-[0.2em] placeholder:text-gray-300 font-bold"
         />
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gray-100 origin-left scale-x-100 group-focus-within:bg-dark transition-all"></div>
+        
         {searchQuery && (
           <button onClick={() => setSearch('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-dark text-xs">
-            ✕
+            className="absolute right-0 top-1/2 -translate-y-1/2 text-gray-300 hover:text-dark transition-colors">
+            <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2.5}>
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
           </button>
         )}
       </div>
 
-      {/* Result count */}
-      <span className="text-[10px] uppercase tracking-widest text-gray-400 whitespace-nowrap">
-        {totalFiltered} product{totalFiltered !== 1 ? 's' : ''}
-      </span>
-
       {/* Spacer */}
-      <div className="flex-1" />
+      <div className="hidden md:block flex-1" />
 
-      {/* Sort */}
-      <select
-        value={sortBy}
-        onChange={(e) => setSortBy(e.target.value as any)}
-        className="text-[10px] uppercase tracking-wider border border-gray-200 px-3 py-2
-          bg-white outline-none cursor-pointer hover:border-dark transition-colors"
-      >
-        {SORT_OPTIONS.map((o) => (
-          <option key={o.value} value={o.value}>{o.label}</option>
-        ))}
-      </select>
+      {/* Right Actions */}
+      <div className="flex items-center gap-8">
+        {/* Result count */}
+        <span className="text-[9px] uppercase tracking-[0.3em] font-black text-dark">
+          {totalFiltered} <span className="text-gray-400 ml-1">Results</span>
+        </span>
 
-      {/* View toggle */}
-      <div className="flex gap-1">
-        {(['grid', 'list'] as const).map((m) => (
-          <button key={m} onClick={() => setViewMode(m)} title={`${m} view`}
-            className={`w-8 h-8 flex items-center justify-center border rounded-sm transition-all duration-150
-              ${viewMode === m ? 'bg-dark text-white border-dark' : 'border-gray-200 text-gray-400 hover:border-dark hover:text-dark'}`}>
-            {m === 'grid' ? <GridIcon /> : <ListIcon />}
-          </button>
-        ))}
+        {/* Sort */}
+        <div className="relative group">
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as any)}
+              className="text-[10px] uppercase tracking-[0.2em] font-black bg-transparent outline-none cursor-pointer pr-6 appearance-none hover:text-gray-500 transition-colors"
+            >
+              {SORT_OPTIONS.map((o) => (
+                <option key={o.value} value={o.value}>{o.label}</option>
+              ))}
+            </select>
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+               <svg viewBox="0 0 24 24" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2.5}>
+                  <path d="M6 9l6 6 6-6" />
+               </svg>
+            </div>
+        </div>
+
+        {/* View toggle */}
+        <div className="flex gap-4 border-l border-gray-100 pl-8">
+          {(['grid', 'list'] as const).map((m) => (
+            <button key={m} onClick={() => setViewMode(m)} title={`${m} view`}
+              className={`transition-all duration-300 flex items-center gap-2
+                ${viewMode === m ? 'text-dark scale-110' : 'text-gray-200 hover:text-gray-400'}`}>
+              <div className="w-4 h-4 flex items-center justify-center">
+                 {m === 'grid' ? <GridIcon /> : <ListIcon />}
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

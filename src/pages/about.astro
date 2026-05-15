@@ -1,49 +1,85 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SiteHeader from "../components/landing/SiteHeader.astro";
-import SiteFooter from "../components/landing/SiteFooter.astro";
-import heroImg from "../assets/images/1000151766.jpg.jpeg";
-import storyImg from "../assets/images/1000151768.jpg.jpeg";
+import heroImg from "../assets/images/1000152082.jpg.jpeg";
+import storyImg1 from "../assets/images/1000151768.jpg.jpeg";
+import storyImg2 from "../assets/images/1000151774.jpg.jpeg";
+import valuesImg from "../assets/images/1000151776.jpg.jpeg";
 ---
 
-<Layout title="About - Triostepdkhyber">
-    <SiteHeader />
-    <main class="w-full bg-[#f8f8f8] text-dark relative">
-        <!-- Hero Section -->
-        <section class="relative w-full h-[80vh] overflow-hidden flex items-center justify-center">
+<Layout title="About Us | Triostepdkhyber">
+    <main class="w-full bg-[#FAFAFA] text-dark relative selection:bg-dark selection:text-white">
+        
+        {/* Hero Section */}
+        <section class="relative w-full h-[90vh] overflow-hidden flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-12">
             <div class="absolute inset-0 z-0 bg-dark">
-                <img src={heroImg.src} alt="Triostepdkhyber Workshop" class="w-full h-full object-cover opacity-60 mix-blend-overlay gsap-parallax" />
+                <img src={heroImg.src} alt="Triostepdkhyber Heritage" class="w-full h-full object-cover opacity-70 mix-blend-overlay gsap-parallax" />
+                <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent"></div>
             </div>
-            <div class="relative z-10 text-center px-4">
-                <h1 class="font-display text-5xl md:text-8xl font-bold uppercase tracking-tighter text-white drop-shadow-2xl gsap-fade-up">
-                    Crafting <br /> Legacy
+            <div class="relative z-10 max-w-5xl mx-auto w-full">
+                <h1 class="font-display text-5xl md:text-8xl lg:text-[10rem] font-bold uppercase tracking-tighter text-white leading-[0.85] gsap-fade-up">
+                    Crafting <br /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Legacy</span>
                 </h1>
+                <p class="mt-8 text-gray-300 max-w-xl text-lg md:text-xl font-light tracking-wide gsap-fade-up delay-100">
+                    Redefining luxury footwear through uncompromising quality, timeless silhouettes, and an absolute dedication to the craft.
+                </p>
             </div>
         </section>
 
-        <!-- Story Section -->
-        <section class="max-w-7xl mx-auto px-6 py-24 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div class="gsap-fade-up">
-                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-dark mb-6">The Triostepdkhyber Story</h2>
-                <div class="space-y-6 text-gray-600 text-lg font-light leading-relaxed">
-                    <p>
-                        Triostepdkhyber was born from a singular vision: to create the perfect boot. What started as a passion for classic silhouettes has evolved into a comprehensive collection of premium footwear, meticulously designed for those who appreciate both form and function.
-                    </p>
-                    <p>
-                        Every stitch, every cut of leather, and every sole is a testament to our unwavering commitment to quality. We source only the finest full-grain leathers and employ time-honored construction techniques to ensure that our footwear doesn't just endure, but improves with age.
-                    </p>
+        {/* The Story Section */}
+        <section class="max-w-screen-2xl mx-auto px-6 py-32 md:py-48 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                <div class="lg:col-span-5 gsap-fade-up sticky top-32">
+                    <h2 class="font-display text-xs tracking-[0.3em] uppercase text-gray-400 mb-6 font-bold">Our Genesis</h2>
+                    <h3 class="font-display text-4xl md:text-6xl font-bold uppercase tracking-tight text-dark mb-10 leading-none">
+                        More Than <br/> Just Shoes
+                    </h3>
+                    <div class="space-y-8 text-gray-600 text-lg font-light leading-relaxed">
+                        <p class="text-2xl text-dark font-medium leading-snug">
+                            Triostepdkhyber was born from a singular vision: to bridge the gap between traditional shoemaking and modern architectural design.
+                        </p>
+                        <p>
+                            What started as a passion for classic silhouettes has evolved into a comprehensive collection of premium footwear, meticulously designed for those who appreciate both form and function. We source only the finest full-grain leathers from world-renowned tanneries.
+                        </p>
+                        <p>
+                            Every stitch, every cut of leather, and every sole is a testament to our unwavering commitment to quality. Our footwear doesn't just endure; it develops character, telling the unique story of the wearer with every step.
+                        </p>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="aspect-[3/4] overflow-hidden bg-gray-200 mt-0 md:mt-24 gsap-fade-up">
+                        <img src={storyImg1.src} alt="Craftsmanship Detail" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 hover:scale-105" />
+                    </div>
+                    <div class="aspect-[3/4] overflow-hidden bg-gray-200 gsap-fade-up">
+                        <img src={storyImg2.src} alt="Design Process" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 hover:scale-105" />
+                    </div>
                 </div>
             </div>
-            <div class="aspect-[4/5] overflow-hidden bg-gray-200 gsap-fade-up relative">
-                <img src={storyImg.src} alt="Craftsmanship" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+        </section>
+
+        {/* Values Banner */}
+        <section class="w-full bg-dark text-white py-32 md:py-48 px-6 relative overflow-hidden">
+            <div class="absolute right-0 top-0 w-1/2 h-full opacity-20 hidden md:block">
+                <img src={valuesImg.src} alt="Texture" class="w-full h-full object-cover object-right grayscale mix-blend-luminosity" />
+            </div>
+            <div class="max-w-screen-2xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
+                {[
+                    { title: "Precision", desc: "Every millimeter is calculated. We employ time-honored construction techniques combined with cutting-edge comfort technology." },
+                    { title: "Endurance", desc: "Built to last decades, not seasons. Our Goodyear-welted construction means your favorite pair can be resoled indefinitely." },
+                    { title: "Sourcing", desc: "We partner exclusively with sustainable tanneries that meet the highest environmental and ethical standards globally." }
+                ].map((val, i) => (
+                    <div class="gsap-fade-up border-t border-white/20 pt-8" style={`transition-delay: ${i * 100}ms`}>
+                        <h4 class="font-display text-2xl font-bold uppercase tracking-widest mb-6">{val.title}</h4>
+                        <p class="text-gray-400 font-light text-lg leading-relaxed">{val.desc}</p>
+                    </div>
+                ))}
             </div>
         </section>
 
-        <!-- Marquee Testimonials -->
-        <section class="w-full bg-dark py-24 overflow-hidden relative text-white">
-            <div class="text-center mb-16 px-4 gsap-fade-up">
-                <h2 class="font-display text-3xl md:text-5xl font-bold uppercase tracking-tight">Walk With Us</h2>
-                <p class="text-gray-400 max-w-xl mx-auto mt-4 text-xl font-light">Don't just take our word for it. Hear from those who step in Triostepdkhyber every day.</p>
+        {/* Marquee Testimonials */}
+        <section class="w-full bg-[#FAFAFA] py-32 overflow-hidden relative">
+            <div class="text-center mb-20 px-4 gsap-fade-up">
+                <h2 class="font-display text-sm tracking-[0.3em] uppercase text-gray-400 mb-4 font-bold">The Community</h2>
+                <h3 class="font-display text-4xl md:text-6xl font-bold uppercase tracking-tight text-dark">Walk With Us</h3>
             </div>
             
             <div class="relative flex overflow-x-hidden group">
@@ -55,11 +91,14 @@ import storyImg from "../assets/images/1000151768.jpg.jpeg";
                             { name: "Elena R.", role: "Creative Director", text: "I own three pairs now. They are my absolute go-to for client pitches and weekend wear alike." },
                             { name: "David T.", role: "Photographer", text: "Durability meets high fashion. They survived a month-long shoot in Iceland and still look immaculate." },
                         ].map(t => (
-                            <div class="w-80 md:w-96 flex-shrink-0 mx-4 p-8 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl">
-                                <p class="text-gray-300 text-lg italic mb-6 leading-relaxed">"{t.text}"</p>
-                                <div>
-                                    <h4 class="font-bold text-white tracking-wider uppercase text-sm">{t.name}</h4>
-                                    <p class="text-gray-500 text-xs tracking-widest uppercase">{t.role}</p>
+                            <div class="w-[350px] md:w-[450px] flex-shrink-0 mx-4 p-10 bg-white border border-gray-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
+                                <p class="text-gray-600 text-lg md:text-xl font-light italic mb-8 leading-relaxed">"{t.text}"</p>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-dark font-bold font-display">{t.name.charAt(0)}</div>
+                                    <div>
+                                        <h4 class="font-bold text-dark tracking-wider uppercase text-sm">{t.name}</h4>
+                                        <p class="text-gray-400 text-xs tracking-widest uppercase mt-1">{t.role}</p>
+                                    </div>
                                 </div>
                             </div>
                         ))
@@ -74,11 +113,14 @@ import storyImg from "../assets/images/1000151768.jpg.jpeg";
                             { name: "Elena R.", role: "Creative Director", text: "I own three pairs now. They are my absolute go-to for client pitches and weekend wear alike." },
                             { name: "David T.", role: "Photographer", text: "Durability meets high fashion. They survived a month-long shoot in Iceland and still look immaculate." },
                         ].map(t => (
-                            <div class="w-80 md:w-96 flex-shrink-0 mx-4 p-8 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl">
-                                <p class="text-gray-300 text-lg italic mb-6 leading-relaxed">"{t.text}"</p>
-                                <div>
-                                    <h4 class="font-bold text-white tracking-wider uppercase text-sm">{t.name}</h4>
-                                    <p class="text-gray-500 text-xs tracking-widest uppercase">{t.role}</p>
+                            <div class="w-[350px] md:w-[450px] flex-shrink-0 mx-4 p-10 bg-white border border-gray-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
+                                <p class="text-gray-600 text-lg md:text-xl font-light italic mb-8 leading-relaxed">"{t.text}"</p>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-dark font-bold font-display">{t.name.charAt(0)}</div>
+                                    <div>
+                                        <h4 class="font-bold text-dark tracking-wider uppercase text-sm">{t.name}</h4>
+                                        <p class="text-gray-400 text-xs tracking-widest uppercase mt-1">{t.role}</p>
+                                    </div>
                                 </div>
                             </div>
                         ))
@@ -87,7 +129,6 @@ import storyImg from "../assets/images/1000151768.jpg.jpeg";
             </div>
         </section>
     </main>
-    <SiteFooter />
 </Layout>
 
 <style>
@@ -96,7 +137,7 @@ import storyImg from "../assets/images/1000151768.jpg.jpeg";
         100% { transform: translateX(-100%); }
     }
     .animate-marquee-about {
-        animation: marquee-about 35s linear infinite;
+        animation: marquee-about 40s linear infinite;
     }
 </style>
 
@@ -108,7 +149,6 @@ import storyImg from "../assets/images/1000151768.jpg.jpeg";
     gsap.registerPlugin(ScrollTrigger);
 
     function initAbout() {
-        // Smooth scroll
         const lenis = new Lenis({
             duration: 1.2,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -125,7 +165,7 @@ import storyImg from "../assets/images/1000151768.jpg.jpeg";
 
         // Hero Parallax
         gsap.to(".gsap-parallax", {
-            yPercent: 30,
+            yPercent: 20,
             ease: "none",
             scrollTrigger: {
                 trigger: ".gsap-parallax",
@@ -139,11 +179,11 @@ import storyImg from "../assets/images/1000151768.jpg.jpeg";
         const fadeElements = document.querySelectorAll(".gsap-fade-up");
         fadeElements.forEach((el) => {
             gsap.fromTo(el, 
-                { y: 50, opacity: 0 },
+                { y: 60, opacity: 0 },
                 { 
                     y: 0, 
                     opacity: 1, 
-                    duration: 1, 
+                    duration: 1.2, 
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: el,
@@ -155,7 +195,6 @@ import storyImg from "../assets/images/1000151768.jpg.jpeg";
         });
     }
 
-    // Run on both standard load and Astro page transitions
     document.addEventListener("DOMContentLoaded", initAbout);
     document.addEventListener("astro:page-load", initAbout);
 </script>
