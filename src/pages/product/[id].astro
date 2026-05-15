@@ -6,13 +6,31 @@ import ProductCard from "../../components/landing/ProductCard.astro";
 import { fmtPrice } from "../../components/shop/ui/ShopAtoms";
 
 export async function getStaticPaths() {
+    // We map all products to their unique ID paths
     return PRODUCTS.map((product) => ({
         params: { id: product.id.toString() },
         props: { product },
     }));
 }
 
-const { product } = Astro.props;
+const { id } = Astro.params;
+let { product } = Astro.props;
+
+// Extremely robust lookup: 
+// 1. Convert id to integer for comparison
+// 2. Search PRODUCTS data directly to ensure total data parity
+if (id) {
+    const numericId = parseInt(id, 10);
+    const foundProduct = PRODUCTS.find(p => p.id === numericId);
+    if (foundProduct) {
+        product = foundProduct;
+    }
+}
+
+// Final safety check
+if (!product) {
+    return Astro.redirect('/shop');
+}
 
 // Filter related products
 const relatedProducts = PRODUCTS.filter(

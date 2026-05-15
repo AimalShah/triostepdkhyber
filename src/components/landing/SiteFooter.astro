@@ -1,125 +1,106 @@
 <!-- BEGIN: Footer -->
 <footer
     data-animate-section
-    class="w-full bg-dark text-white pt-12 md:pt-16 pb-px"
+    class="w-full bg-[#0A0A0A] text-white pt-24 md:pt-32 pb-12 overflow-hidden"
 >
-    <div
-        class="max-w-[1440px] mx-auto px-4 sm:px-6 mb-10 md:mb-16 overflow-hidden"
-    >
-        <a
-            href="/"
-            data-animate-footer-brand
-            class="font-display text-[clamp(3.75rem,15vw,200px)] leading-[0.75] font-bold uppercase tracking-tighter text-center will-change-transform"
-            style={{ letterSpacing: "-0.06em" }}
-        >
-            Triostepdkhyber
-        </a>
-        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 pb-8">
-            <div
-                class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-12 md:mb-16 text-[10px] uppercase tracking-wider text-gray-400"
-            >
-                <div class="flex flex-col space-y-3">
-                    <span class="text-white mb-2">About Store</span>
-                    <a class="hover:text-white transition-colors" href="#"
-                        >About Triostepdkhyber</a
-                    >
-                    <a class="hover:text-white transition-colors" href="#"
-                        >Our Stores</a
-                    >
-                    <a class="hover:text-white transition-colors" href="#"
-                        >Ask a Question</a
-                    >
-                    <a class="hover:text-white transition-colors" href="#"
-                        >Details</a
-                    >
-                    <a class="hover:text-white transition-colors" href="#"
-                        >Contacts</a
-                    >
+    <div class="max-w-[1440px] mx-auto px-6">
+        
+        {/* Top Section: Branding & Newsletter */}
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24 items-start">
+            <div class="lg:col-span-5">
+                 <h2 class="text-[10px] uppercase tracking-[0.5em] text-gray-500 font-black mb-8 block">Newsletter</h2>
+                 <p class="text-xl md:text-2xl font-bold uppercase tracking-tighter mb-10 max-w-sm">
+                    Join the archive for <span class="text-gray-500 italic font-light">exclusive</span> access.
+                 </p>
+                 <form class="relative group max-w-md">
+                    <input 
+                        type="email" 
+                        placeholder="EMAIL ADDRESS" 
+                        class="w-full bg-transparent border-b border-white/20 py-4 text-[11px] uppercase tracking-[0.2em] outline-none focus:border-white transition-colors placeholder:text-gray-700"
+                    />
+                    <button class="absolute right-0 bottom-4 text-[10px] uppercase tracking-[0.3em] font-black hover:text-gray-400 transition-colors">
+                        Subscribe →
+                    </button>
+                 </form>
+            </div>
+            
+            <div class="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-12 text-[10px] uppercase tracking-[0.25em] font-bold text-gray-500">
+                <div class="flex flex-col space-y-4">
+                    <span class="text-white font-black mb-4 tracking-[0.4em]">Company</span>
+                    <a class="hover:text-white transition-colors" href="/about">About Us</a>
+                    <a class="hover:text-white transition-colors" href="/collections">Collections</a>
+                    <a class="hover:text-white transition-colors" href="/shop">Archive</a>
+                    <a class="hover:text-white transition-colors" href="/about">Sustainability</a>
                 </div>
-                <div class="flex flex-col space-y-3">
-                    <span class="text-white mb-2">Buyers</span>
-                    <a class="hover:text-white transition-colors" href="#"
-                        >FAQ</a
-                    >
-                    <a class="hover:text-white transition-colors" href="#"
-                        >Product Care</a
-                    >
-                    <a class="hover:text-white transition-colors" href="#"
-                        >Payment and Delivery</a
-                    >
-                    <a class="hover:text-white transition-colors" href="#"
-                        >Exchange and Return</a
-                    >
-                    <a class="hover:text-white transition-colors" href="#"
-                        >Bonus Program</a
-                    >
-                    <a class="hover:text-white transition-colors" href="#"
-                        >Installment Payment</a
-                    >
-                    <a class="hover:text-white transition-colors" href="#"
-                        >Split Payment</a
-                    >
+                <div class="flex flex-col space-y-4">
+                    <span class="text-white font-black mb-4 tracking-[0.4em]">Support</span>
+                    <a class="hover:text-white transition-colors" href="#">Shipping</a>
+                    <a class="hover:text-white transition-colors" href="#">Returns</a>
+                    <a class="hover:text-white transition-colors" href="#">Sizing</a>
+                    <a class="hover:text-white transition-colors" href="#">FAQ</a>
                 </div>
-                <div class="flex flex-col space-y-3">
-                    <span class="text-white mb-2">Contact Us</span>
-                    <a
-                        class="hover:text-white transition-colors normal-case"
-                        href="mailto:support@triostepdkhyber.com"
-                    >
-                        support@triostepdkhyber.com
-                    </a>
-                    <a
-                        class="hover:text-white transition-colors normal-case"
-                        href="#">whatsapp (online orders)</a
-                    >
-                    <span class="text-white mt-6 mb-2">Socials</span>
-                    <a
-                        class="hover:text-white transition-colors normal-case"
-                        href="#">telegram</a
-                    >
-                    <a
-                        class="hover:text-white transition-colors normal-case"
-                        href="#">vkontakte</a
-                    >
-                    <a
-                        class="hover:text-white transition-colors normal-case"
-                        href="#">instagram</a
-                    >
-                </div>
-                <div class="flex flex-col space-y-3 col-span-2 lg:col-span-1">
-                    <span class="text-white mb-2">Stores in Moscow</span>
-                    <a
-                        class="hover:text-white transition-colors normal-case"
-                        href="tel:+79991234567"
-                    >
-                        +7 (999) 123-45-67
-                    </a>
-                    <span class="normal-case">Kuznetsky Most, 4/3s1</span>
-                    <span class="text-white mt-6 mb-2">Stores in Ufa</span>
-                    <a
-                        class="hover:text-white transition-colors normal-case"
-                        href="tel:+79997654321"
-                    >
-                        +7 (999) 765-43-21
-                    </a>
-                    <span class="normal-case">Kommunisticheskaya, 33</span>
+                <div class="flex flex-col space-y-4">
+                    <span class="text-white font-black mb-4 tracking-[0.4em]">Social</span>
+                    <a class="hover:text-white transition-colors" href="#">Instagram</a>
+                    <a class="hover:text-white transition-colors" href="#">Telegram</a>
+                    <a class="hover:text-white transition-colors" href="#">Facebook</a>
+                    <a class="hover:text-white transition-colors" href="#">Pinterest</a>
                 </div>
             </div>
-            <div
-                class="flex flex-col md:flex-row md:flex-wrap justify-between items-start md:items-center gap-x-8 gap-y-3 pt-8 border-t border-gray-800 text-[10px] text-gray-500 uppercase tracking-wider"
-            >
+        </div>
+
+        {/* Massive Brand Name with Reveal Animation */}
+        <div class="border-t border-white/5 pt-12 md:pt-20">
+            <div class="overflow-hidden">
+                <a
+                    href="/"
+                    class="gsap-footer-brand block font-display text-[clamp(4rem,18vw,280px)] leading-[0.7] font-bold uppercase tracking-tighter text-center will-change-transform text-white"
+                    style={{ letterSpacing: "-0.05em" }}
+                >
+                    Triostep
+                </a>
+            </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div class="mt-20 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/5 pt-12 text-[9px] uppercase tracking-[0.3em] font-black text-gray-600">
+            <div class="flex gap-8">
                 <span>© 2024 Triostepdkhyber</span>
-                <a class="hover:text-white transition-colors" href="#"
-                    >Public Offer</a
-                >
-                <a class="hover:text-white transition-colors" href="#"
-                    >Website Development</a
-                >
-                <a class="hover:text-white transition-colors" href="#"
-                    >Privacy Policy</a
-                >
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <span class="text-gray-800 italic">Designed by Triostep Lab</span>
+                <div class="flex gap-2 opacity-30 grayscale">
+                    {/* Placeholder for payment logos */}
+                    <div class="w-8 h-5 bg-white/20"></div>
+                    <div class="w-8 h-5 bg-white/20"></div>
+                    <div class="w-8 h-5 bg-white/20"></div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- END: Footer -->
 </footer>
+
+<script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    gsap.registerPlugin(ScrollTrigger);
+
+    function initFooter() {
+        gsap.from(".gsap-footer-brand", {
+            yPercent: 100,
+            duration: 1.5,
+            ease: "power4.out",
+            scrollTrigger: {
+                trigger: ".gsap-footer-brand",
+                start: "top 95%",
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', initFooter);
+    document.addEventListener('astro:page-load', initFooter);
+</script>
+<!-- END: Footer -->

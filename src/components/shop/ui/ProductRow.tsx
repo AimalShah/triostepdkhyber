@@ -16,20 +16,22 @@ export default function ProductRow({ product }: { product: Product }) {
       ${!product.inStock ? 'opacity-60' : ''}`}>
 
       {/* Image */}
-      <div className="relative w-20 h-20 bg-light flex-shrink-0 overflow-hidden">
+      <a href={`/product/${product.id}`} className="relative w-20 h-20 bg-light flex-shrink-0 overflow-hidden group/rowimg">
         <img src={product.image} alt={product.name} loading="lazy"
-          className="w-full h-full object-contain mix-blend-multiply p-2" />
+          className="w-full h-full object-contain mix-blend-multiply p-2 transition-transform group-hover/rowimg:scale-110" />
         {!product.inStock && (
           <div className="absolute inset-0 bg-white/60 flex items-center justify-center">
             <span className="text-[8px] uppercase font-semibold text-gray-400">Out</span>
           </div>
         )}
-      </div>
+      </a>
 
       {/* Info */}
       <div className="flex-1 min-w-0">
         <p className="text-[9px] uppercase tracking-widest text-gray-400">{product.category}</p>
-        <h3 className="text-xs font-bold uppercase tracking-tight leading-snug mb-1">{product.name}</h3>
+        <a href={`/product/${product.id}`} className="hover:text-gray-500 transition-colors">
+          <h3 className="text-xs font-bold uppercase tracking-tight leading-snug mb-1">{product.name}</h3>
+        </a>
         <StarRating rating={product.rating} reviews={product.reviews} />
         <p className="text-[9px] text-gray-400">SKU: {product.sku}</p>
       </div>

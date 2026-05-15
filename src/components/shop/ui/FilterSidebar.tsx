@@ -101,14 +101,14 @@ export default function FilterSidebar() {
       <FilterSection title="Price">
         <div className="space-y-6">
           <div className="flex justify-between text-[11px] font-bold tracking-tighter text-dark italic">
-            <span>{new Intl.NumberFormat('ru-RU').format(priceRange[0])} ₽</span>
-            <span>{new Intl.NumberFormat('ru-RU').format(priceRange[1])} ₽</span>
+            <span>{new Intl.NumberFormat('ru-RU').format(priceRange[0])}Rs</span>
+            <span>{new Intl.NumberFormat('ru-RU').format(priceRange[1])}Rs</span>
           </div>
           <div className="relative h-6 flex items-center">
-             <input type="range" min={0} max={35000} step={500}
-                value={priceRange[1]}
-                onChange={(e) => setPriceRange([priceRange[0], +e.target.value])}
-                className="w-full h-[2px] appearance-none bg-gray-100 accent-dark cursor-pointer" />
+            <input type="range" min={0} max={35000} step={500}
+              value={priceRange[1]}
+              onChange={(e) => setPriceRange([priceRange[0], +e.target.value])}
+              className="w-full h-[2px] appearance-none bg-gray-100 accent-dark cursor-pointer" />
           </div>
         </div>
       </FilterSection>
@@ -116,8 +116,8 @@ export default function FilterSidebar() {
       {/* Availability */}
       <FilterSection title="Availability">
         <div className="space-y-2">
-            <ToggleRow label="In Stock"  checked={inStockOnly} onChange={setInStockOnly} />
-            <ToggleRow label="On Sale"   checked={onSaleOnly}  onChange={setOnSaleOnly}  />
+          <ToggleRow label="In Stock" checked={inStockOnly} onChange={setInStockOnly} />
+          <ToggleRow label="On Sale" checked={onSaleOnly} onChange={setOnSaleOnly} />
         </div>
       </FilterSection>
     </aside>

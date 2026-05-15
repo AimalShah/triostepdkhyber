@@ -2,7 +2,7 @@
 import type { ProductBadge } from '../../data/shop.products';
 
 export const fmtPrice = (n: number) =>
-  new Intl.NumberFormat('ru-RU').format(n) + ' ₽';
+  new Intl.NumberFormat('ru-RU').format(n) + 'Rs';
 
 export const discountPct = (price: number, orig: number) =>
   orig > price ? Math.round((1 - price / orig) * 100) : 0;
@@ -32,7 +32,7 @@ export function BadgeChip({ badge }: { badge: ProductBadge }) {
 
 // ── Star rating ───────────────────────────────────────────────────────────────
 export function StarRating({ rating, reviews }: { rating: number; reviews: number }) {
-  const full  = Math.round(rating);
+  const full = Math.round(rating);
   const empty = 5 - full;
   return (
     <div className="flex items-center gap-2 group/stars cursor-help">
@@ -57,8 +57,8 @@ export function WishlistBtn({
       className="group/wish flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-90"
     >
       <svg viewBox="0 0 24 24" className="w-5 h-5 transition-all duration-500 ease-out"
-        fill={active ? '#000' : 'none'} 
-        stroke={active ? '#000' : 'currentColor'} 
+        fill={active ? '#000' : 'none'}
+        stroke={active ? '#000' : 'currentColor'}
         strokeWidth={1.2}>
         <path d="M12 21C12 21 3 14.5 3 8.5C3 5.46 5.46 3 8.5 3C10.24 3 11.91 3.81 13 5.09C14.09 3.81 15.76 3 17.5 3C20.54 3 23 5.46 23 8.5C23 14.5 14 21 12 21Z" />
       </svg>

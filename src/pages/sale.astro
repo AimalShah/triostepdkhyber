@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ShopCatalog from "../components/shop/ShopCatalog";
+import SaleInitializer from "../components/shop/ui/SaleInitializer";
+---
+
+<Layout title="Seasonal Sale | Triostepdkhyber">
+    <main class="bg-white">
+        {/* Ultimate Sale Hero - Cinematic & Architectural */}
+        <section class="w-full relative bg-dark overflow-hidden min-h-[70vh] flex flex-col justify-center">
+            {/* Background Image Layer */}
+            <div class="absolute inset-0 z-0">
+                <img
+                    alt="Sale Campaign Editorial"
+                    class="w-full h-full object-cover object-center opacity-60 mix-blend-luminosity scale-110 gsap-hero-img"
+                    src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=1600&auto=format&fit=crop&q=80"
+                />
+                <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark/40 to-transparent"></div>
+            </div>
+
+            {/* Content Layer */}
+            <div class="relative z-10 max-w-[1440px] mx-auto px-6 w-full py-20">
+                <div class="max-w-4xl">
+                    <span class="text-[10px] uppercase tracking-[0.5em] text-red-500 font-black mb-6 block gsap-reveal">Seasonal Event</span>
+                    <h1 class="font-display text-7xl md:text-[10rem] font-bold uppercase leading-[0.75] tracking-tighter text-white mb-12 gsap-reveal">
+                        The <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-600">Archive</span> <br/>
+                        <span class="text-red-600 italic font-light lowercase tracking-normal">reductions</span>
+                    </h1>
+                    
+                    <div class="flex flex-col md:flex-row md:items-end gap-16 mt-16 gsap-reveal">
+                        <p class="text-[13px] uppercase tracking-[0.2em] font-light max-w-sm text-gray-300 leading-relaxed border-l border-white/20 pl-8">
+                            A curated selection of archival silhouettes and seasonal favorites, now available at specialized pricing.
+                        </p>
+                        <div class="flex-1 flex justify-start md:justify-end">
+                            <div class="group cursor-pointer">
+                                <div class="flex items-center gap-4 mb-2">
+                                    <div class="w-12 h-px bg-red-600 group-hover:w-20 transition-all duration-500"></div>
+                                    <span class="text-[10px] uppercase tracking-[0.4em] font-black text-white italic">Save up to 40%</span>
+                                </div>
+                                <span class="text-[9px] uppercase tracking-[0.2em] text-gray-500">Limited Availability in Store</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Architectural Border Detail */}
+            <div class="absolute bottom-0 right-0 w-1/4 h-full border-l border-white/5 pointer-events-none hidden lg:block"></div>
+        </section>
+
+        <script>
+            import gsap from 'gsap';
+            import { ScrollTrigger } from 'gsap/ScrollTrigger';
+            gsap.registerPlugin(ScrollTrigger);
+
+            function initSaleHero() {
+                // Parallax effect on background image
+                gsap.to(".gsap-hero-img", {
+                    yPercent: 20,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: ".gsap-hero-img",
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+
+                // Text reveals
+                gsap.from(".gsap-reveal", {
+                    y: 50,
+                    opacity: 0,
+                    duration: 1.5,
+                    stagger: 0.2,
+                    ease: "power4.out",
+                    scrollTrigger: {
+                        trigger: ".gsap-reveal",
+                        start: "top 90%"
+                    }
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', initSaleHero);
+            document.addEventListener('astro:page-load', initSaleHero);
+        </script>
+
+        {/* The Shop Interface */}
+        <section class="py-20">
+            <SaleInitializer client:load />
+            <ShopCatalog client:load />
+        </section>
+    </main>
+</Layout>
