@@ -17,20 +17,20 @@ const pathname = Astro.url.pathname;
 ---
 
 <!-- BEGIN: Announcement Bar -->
-<div class="w-full bg-dark text-white text-[9px] uppercase tracking-[0.25em] font-medium py-2 px-4 border-b border-white/10 z-[101] relative select-none">
+<div class="w-full bg-dark text-white text-[8px] sm:text-[9px] uppercase tracking-[0.14em] sm:tracking-[0.25em] font-medium py-2 px-3 sm:px-4 border-b border-white/10 z-[101] relative select-none">
     <div class="max-w-[1440px] mx-auto flex items-center justify-between">
         <div class="hidden md:flex items-center gap-2 text-gray-400">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
             <span>Atelier Open · Khyber Heritage</span>
         </div>
         
-        <div class="flex-1 text-center flex items-center justify-center gap-3 text-gray-300">
-            <span class="font-bold text-white">COMPLIMENTARY EXPRESS DELIVERY OVER 25,000 RS</span>
+        <div class="flex-1 text-center flex items-center justify-center gap-2 sm:gap-3 text-gray-300 truncate">
+            <span class="font-bold text-white truncate">COMPLIMENTARY EXPRESS DELIVERY OVER 25,000 RS</span>
             <span class="hidden sm:inline text-white/30">•</span>
             <span class="hidden sm:inline text-gray-400">14-DAY COMPLIMENTARY EXCHANGES</span>
         </div>
 
-        <div class="hidden lg:flex items-center gap-4 text-gray-400 font-bold">
+        <div class="hidden lg:flex items-center gap-4 text-gray-400 font-bold shrink-0">
             <span class="text-white/80">PKR (Rs) · Pakistan</span>
             <span class="text-white/20">|</span>
             <a href="https://wa.me/923000000000" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
@@ -47,20 +47,20 @@ const pathname = Astro.url.pathname;
     class="w-full bg-white/95 border-b border-gray-100 sticky top-0 z-[100] backdrop-blur-xl transition-all duration-300 shadow-[0_2px_20px_-10px_rgba(0,0,0,0.05)]"
 >
     <div
-        class="max-w-[1440px] mx-auto px-6 py-4 md:py-5 flex justify-between items-center gap-4"
+        class="max-w-[1440px] mx-auto px-4 sm:px-6 py-3 sm:py-4 md:py-5 flex justify-between items-center gap-2 sm:gap-4"
     >
         {/* Logo & Brand Identity */}
-        <a class="shrink-0 flex items-center gap-3 relative z-[110] group" href="/">
+        <a class="shrink min-w-0 flex items-center gap-2.5 sm:gap-3 relative z-[110] group" href="/">
             <img 
                 src={logoImg.src} 
                 alt="Triostepdekhyaber Emblem" 
-                class="h-9 md:h-10 w-auto object-contain transition-transform duration-500 group-hover:scale-105" 
+                class="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-500 group-hover:scale-105 shrink-0" 
             />
-            <div class="flex flex-col">
-                <span class="font-display text-sm md:text-[15px] font-black uppercase tracking-[0.25em] text-dark leading-none group-hover:text-gray-600 transition-colors">
+            <div class="flex flex-col min-w-0">
+                <span class="font-display text-xs sm:text-sm md:text-[15px] font-black uppercase tracking-[0.16em] sm:tracking-[0.25em] text-dark leading-none group-hover:text-gray-600 transition-colors truncate">
                     Triostepdekhyaber
                 </span>
-                <span class="text-[8px] uppercase tracking-[0.35em] text-gray-400 font-bold mt-1">
+                <span class="text-[7.5px] sm:text-[8px] uppercase tracking-[0.3em] text-gray-400 font-bold mt-1 truncate hidden sm:block">
                     Handcrafted Atelier
                 </span>
             </div>
@@ -106,141 +106,213 @@ const pathname = Astro.url.pathname;
         </div>
 
         {/* Mobile Controls */}
-        <div class="flex md:hidden items-center gap-2 relative z-[110]">
+        <div class="flex md:hidden items-center gap-1 sm:gap-2 shrink-0 relative z-[110]">
              <QuickSearchModal client:load />
              <WishlistHeaderBtn client:load />
              <CartDrawer client:load />
-             <button id="mobile-menu-toggle" class="relative w-9 h-9 flex items-center justify-center p-2 group ml-1" aria-label="Toggle Menu">
-                <div class="w-5 flex flex-col gap-1.5 transition-all duration-500">
-                    <span id="line-top" class="w-full h-[1.5px] bg-dark origin-center transition-all duration-500"></span>
-                    <span id="line-mid" class="w-full h-[1.5px] bg-dark transition-all duration-500"></span>
-                    <span id="line-bot" class="w-full h-[1.5px] bg-dark origin-center transition-all duration-500"></span>
+             
+             {/* Mobile Hamburger Toggle Button */}
+             <button 
+                id="mobile-menu-toggle" 
+                class="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center p-2 rounded-sm text-dark hover:bg-gray-100 transition-colors ml-0.5 focus:outline-none cursor-pointer" 
+                aria-label="Toggle Navigation Menu"
+                aria-expanded="false"
+                aria-controls="mobile-menu-overlay"
+             >
+                <div class="w-5 flex flex-col gap-1.5 pointer-events-none">
+                    <span id="line-top" class="w-full h-[1.5px] bg-dark origin-center transition-all duration-300"></span>
+                    <span id="line-mid" class="w-full h-[1.5px] bg-dark transition-all duration-300"></span>
+                    <span id="line-bot" class="w-full h-[1.5px] bg-dark origin-center transition-all duration-300"></span>
                 </div>
              </button>
         </div>
     </div>
 
     {/* Elite Mobile Menu Overlay */}
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-white z-[105] clip-path-hidden lg:hidden">
-        <div class="h-full flex flex-col px-8 pt-24 pb-10 relative overflow-y-auto">
-            {/* Header section in menu */}
-            <div class="flex justify-between items-center mb-8 mobile-menu-link opacity-0">
-                <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-black">Atelier Directory</span>
-                <div class="h-px flex-1 bg-gray-100 mx-6"></div>
+    <div 
+        id="mobile-menu-overlay" 
+        class="fixed inset-0 bg-white z-[105] opacity-0 pointer-events-none transition-all duration-300 lg:hidden overflow-hidden"
+    >
+        <div class="h-full flex flex-col px-6 sm:px-8 pt-6 pb-8 relative overflow-y-auto">
+            {/* Menu Header Bar */}
+            <div class="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
+                <div class="flex items-center gap-2">
+                    <img 
+                        src={logoImg.src} 
+                        alt="Triostepdekhyaber" 
+                        class="h-7 w-auto object-contain" 
+                    />
+                    <span class="font-display text-xs font-black uppercase tracking-[0.2em] text-dark">
+                        Atelier Menu
+                    </span>
+                </div>
+                
+                <button 
+                    id="mobile-menu-close-btn" 
+                    class="w-9 h-9 rounded-full bg-gray-100 hover:bg-dark hover:text-white flex items-center justify-center text-dark transition-colors cursor-pointer" 
+                    aria-label="Close menu"
+                >
+                    <span class="material-symbols-outlined text-base">close</span>
+                </button>
             </div>
 
-            <nav class="flex flex-col relative z-10 flex-1">
+            {/* Quick Category Discovery Pills */}
+            <div class="mb-6">
+                <span class="text-[9px] uppercase tracking-[0.3em] text-gray-400 font-bold block mb-2.5">
+                    Fast Discovery
+                </span>
+                <div class="flex flex-wrap gap-2">
+                    <a href="/shop" class="mobile-menu-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-gray-50 border border-gray-200 text-dark hover:bg-dark hover:text-white transition-colors">
+                        Chelsea Boots
+                    </a>
+                    <a href="/shop" class="mobile-menu-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-gray-50 border border-gray-200 text-dark hover:bg-dark hover:text-white transition-colors">
+                        Ankle Boots
+                    </a>
+                    <a href="/shop" class="mobile-menu-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-gray-50 border border-gray-200 text-dark hover:bg-dark hover:text-white transition-colors">
+                        Derbies
+                    </a>
+                    <a href="/shop" class="mobile-menu-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-gray-50 border border-gray-200 text-dark hover:bg-dark hover:text-white transition-colors">
+                        Loafers
+                    </a>
+                    <a href="/sale" class="mobile-menu-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-700 hover:text-white transition-colors">
+                        Seasonal Sale %
+                    </a>
+                </div>
+            </div>
+
+            {/* Navigation Links */}
+            <nav class="flex flex-col relative z-10 flex-1 divide-y divide-gray-100">
                 {
                     [
-                        { label: "Full Catalog",  href: "/shop" },
-                        { label: "Collections",   href: "/collections" },
-                        { label: "New Arrivals",  href: "/#new-arrivals" },
-                        { label: "Client Reviews",href: "/#reviews" },
-                        { label: "Seasonal Sale", href: "/sale" },
-                        { label: "Wishlist",      href: "/wishlist" },
-                        { label: "Our Story",     href: "/about" }
-                    ].map(({ label, href }) => (
+                        { label: "Full Catalog",   href: "/shop" },
+                        { label: "Collections",    href: "/collections" },
+                        { label: "New Arrivals",   href: "/#new-arrivals" },
+                        { label: "Client Reviews", href: "/#reviews" },
+                        { label: "Seasonal Sale",  href: "/sale", isSale: true },
+                        { label: "Saved Wishlist", href: "/wishlist" },
+                        { label: "Our Story",      href: "/about" },
+                    ].map(({ label, href, isSale }) => (
                         <a
-                            class="mobile-menu-link py-4 border-b border-gray-100 text-xl font-bold uppercase tracking-tight text-dark opacity-0 flex justify-between items-center group"
+                            class="mobile-menu-link py-3.5 text-base sm:text-lg font-bold uppercase tracking-tight text-dark flex justify-between items-center group active:bg-gray-50 transition-colors"
                             href={href}
                         >
-                            <span>{label}</span>
-                            <svg viewBox="0 0 24 24" class="w-4 h-4 text-gray-300 group-hover:text-dark transition-colors" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 18l6-6-6-6" />
-                            </svg>
+                            <span class="flex items-center gap-2">
+                                {isSale && (
+                                    <span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                                )}
+                                <span>{label}</span>
+                            </span>
+                            <span class="material-symbols-outlined text-gray-400 group-hover:text-dark text-base transform group-hover:translate-x-1 transition-all">
+                                arrow_forward
+                            </span>
                         </a>
                     ))
                 }
             </nav>
             
             {/* Professional Footer Actions */}
-            <div class="mt-8 relative z-10">
-                <div class="grid grid-cols-2 gap-3 mb-6 mobile-menu-link opacity-0">
-                    <a href="/shop" class="bg-gray-50 py-3.5 text-center text-[10px] uppercase tracking-[0.25em] font-black hover:bg-dark hover:text-white transition-all">Shop All</a>
-                    <a href="/about" class="bg-gray-50 py-3.5 text-center text-[10px] uppercase tracking-[0.25em] font-black hover:bg-dark hover:text-white transition-all">Heritage</a>
+            <div class="mt-8 pt-6 border-t border-gray-100 relative z-10">
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <a href="/shop" class="mobile-menu-link bg-dark text-white py-3 text-center text-[10px] uppercase tracking-[0.25em] font-black hover:bg-black transition-all shadow-sm">
+                        Shop Catalog
+                    </a>
+                    <a href="https://wa.me/923000000000" target="_blank" rel="noopener noreferrer" class="mobile-menu-link bg-emerald-600 text-white py-3 text-center text-[10px] uppercase tracking-[0.25em] font-black hover:bg-emerald-700 transition-all shadow-sm flex items-center justify-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm">chat</span>
+                        <span>Concierge</span>
+                    </a>
                 </div>
                 
-                <div class="flex flex-col gap-2 pt-4 border-t border-gray-100 mobile-menu-link opacity-0">
-                    <p class="text-[9px] uppercase tracking-[0.3em] text-gray-400">Atelier Inquiries & WhatsApp</p>
-                    <a href="mailto:support@triostepdekhyaber.com" class="text-xs font-bold text-dark">support@triostepdekhyaber.com</a>
-                    <p class="text-[10px] text-gray-400 mt-1">Delivery Nationwide Across Pakistan · Cash on Delivery & Card</p>
+                <div class="flex flex-col gap-1 text-center">
+                    <p class="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold">Atelier Khyber Heritage · Pakistan</p>
+                    <p class="text-[10px] text-gray-500">Free Express Delivery Nationwide Over 25,000 Rs</p>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<style>
-    .clip-path-hidden {
-        clip-path: circle(0% at 90% 5%);
-    }
-</style>
-
 <script>
-    import gsap from 'gsap';
-
-    function initMobileMenu() {
+    function setupMobileMenu() {
         const toggle = document.getElementById('mobile-menu-toggle');
+        const closeBtn = document.getElementById('mobile-menu-close-btn');
         const overlay = document.getElementById('mobile-menu-overlay');
-        const links = document.querySelectorAll('.mobile-menu-link');
-        
         const lineTop = document.getElementById('line-top');
         const lineMid = document.getElementById('line-mid');
         const lineBot = document.getElementById('line-bot');
-        
-        let isOpen = false;
+        const links = overlay?.querySelectorAll('.mobile-menu-link');
 
         if (!toggle || !overlay) return;
 
-        // Clone to clear any old listeners
-        const newToggle = toggle.cloneNode(true);
-        toggle.parentNode?.replaceChild(newToggle, toggle);
+        let isOpen = false;
 
-        newToggle.addEventListener('click', () => {
-            isOpen = !isOpen;
-            
+        function setMenuState(open: boolean) {
+            isOpen = open;
+            toggle?.setAttribute('aria-expanded', String(isOpen));
+
             if (isOpen) {
-                gsap.to(lineTop, { rotation: 45, y: 7.5, duration: 0.4, ease: "power3.inOut" });
-                gsap.to(lineMid, { opacity: 0, scaleX: 0, duration: 0.2 });
-                gsap.to(lineBot, { rotation: -45, y: -7.5, duration: 0.4, ease: "power3.inOut" });
+                // Morph hamburger into X
+                if (lineTop) lineTop.style.transform = 'translateY(7.5px) rotate(45deg)';
+                if (lineMid) lineMid.style.opacity = '0';
+                if (lineBot) lineBot.style.transform = 'translateY(-7.5px) rotate(-45deg)';
 
-                gsap.to(overlay, {
-                    clipPath: "circle(150% at 90% 5%)",
-                    duration: 0.9,
-                    ease: "power3.inOut"
-                });
+                // Show overlay
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                overlay.classList.add('opacity-100', 'pointer-events-auto');
 
-                gsap.to(links, {
-                    opacity: 1,
-                    x: 0,
-                    stagger: 0.06,
-                    duration: 0.6,
-                    delay: 0.3,
-                    ease: "power3.out"
-                });
+                // Lock background scroll
+                document.body.style.overflow = 'hidden';
             } else {
-                gsap.to(lineTop, { rotation: 0, y: 0, duration: 0.4, ease: "power3.inOut" });
-                gsap.to(lineMid, { opacity: 1, scaleX: 1, duration: 0.4 });
-                gsap.to(lineBot, { rotation: 0, y: 0, duration: 0.4, ease: "power3.inOut" });
+                // Morph X back into hamburger
+                if (lineTop) lineTop.style.transform = '';
+                if (lineMid) lineMid.style.opacity = '1';
+                if (lineBot) lineBot.style.transform = '';
 
-                gsap.to(overlay, {
-                    clipPath: "circle(0% at 90% 5%)",
-                    duration: 0.6,
-                    ease: "power3.inOut"
-                });
+                // Hide overlay
+                overlay.classList.remove('opacity-100', 'pointer-events-auto');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
 
-                gsap.to(links, {
-                    opacity: 0,
-                    x: -20,
-                    duration: 0.2
-                });
+                // Unlock background scroll
+                document.body.style.overflow = '';
+            }
+        }
+
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setMenuState(!isOpen);
+        });
+
+        closeBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setMenuState(false);
+        });
+
+        // Close when any navigation link inside the menu is tapped
+        links?.forEach((link) => {
+            link.addEventListener('click', () => {
+                setMenuState(false);
+            });
+        });
+
+        // Close on Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isOpen) {
+                setMenuState(false);
             }
         });
-        
-        gsap.set(links, { x: -20, opacity: 0 });
+
+        // Close if resized to desktop viewport
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024 && isOpen) {
+                setMenuState(false);
+            }
+        });
     }
 
-    document.addEventListener('DOMContentLoaded', initMobileMenu);
-    document.addEventListener('astro:page-load', initMobileMenu);
+    if (document.readyState !== 'loading') {
+        setupMobileMenu();
+    } else {
+        document.addEventListener('DOMContentLoaded', setupMobileMenu);
+    }
+    document.addEventListener('astro:page-load', setupMobileMenu);
 </script>
 <!-- END: Navigation -->

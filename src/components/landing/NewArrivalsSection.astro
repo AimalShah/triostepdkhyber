@@ -10,51 +10,51 @@ const featuredProducts = PRODUCTS.slice(0, 8);
 ---
 
 <!-- BEGIN: New Arrivals -->
-<section id="new-arrivals" data-animate-section class="w-full bg-[#FAFAFA] py-24 md:py-32 overflow-hidden scroll-mt-24">
-    <div class="max-w-[1440px] mx-auto px-6">
+<section id="new-arrivals" data-animate-section class="w-full bg-[#FAFAFA] py-16 sm:py-24 md:py-32 overflow-hidden scroll-mt-24">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div class="text-center mb-12 md:mb-16">
-            <div class="inline-flex items-center gap-2 mb-4">
+        <div class="text-center mb-10 md:mb-16">
+            <div class="inline-flex items-center gap-2 mb-3">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-black">Just Landed In Atelier</span>
+                <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.35em] text-gray-400 font-black">Just Landed In Atelier</span>
             </div>
-            <h2 class="font-display text-4xl md:text-7xl font-bold uppercase tracking-tighter text-dark mb-4 gsap-reveal">
+            <h2 class="font-display text-3xl sm:text-5xl md:text-7xl font-bold uppercase tracking-tight sm:tracking-tighter text-dark mb-4 gsap-reveal">
                 New <span class="text-gray-400">Arrivals</span>
             </h2>
-            <p class="text-xs md:text-sm text-gray-500 max-w-xl mx-auto font-medium tracking-wide gsap-reveal">
+            <p class="text-xs md:text-sm text-gray-500 max-w-xl mx-auto font-medium tracking-wide px-2 gsap-reveal">
                 Hand-welted Khyber craftsmanship in full-grain Italian & vegetable-tanned leathers, sculpted for timeless modern presence.
             </p>
             
-            {/* Interactive Category Filter Tabs */}
-            <div class="flex flex-wrap justify-center gap-4 sm:gap-8 md:gap-10 mt-10 gsap-reveal" id="arrivals-filter-tabs">
+            {/* Interactive Category Filter Tabs - Horizontally scrollable on mobile */}
+            <div class="flex overflow-x-auto no-scrollbar py-2 px-1 gap-4 sm:gap-8 md:gap-10 mt-8 sm:mt-10 sm:justify-center justify-start border-b border-gray-200/50 sm:border-none select-none" id="arrivals-filter-tabs">
                 <button 
                     data-filter="all" 
-                    class="filter-tab-btn active text-[10.5px] uppercase tracking-[0.25em] font-black transition-all border-b-2 pb-2 border-dark text-dark cursor-pointer"
+                    class="filter-tab-btn active text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-black transition-all border-b-2 pb-2 border-dark text-dark cursor-pointer shrink-0"
                 >
                     All Silhouettes
                 </button>
                 <button 
                     data-filter="Chelsea Boots" 
-                    class="filter-tab-btn text-[10.5px] uppercase tracking-[0.25em] font-black transition-all border-b-2 pb-2 border-transparent text-gray-400 hover:text-dark cursor-pointer"
+                    class="filter-tab-btn text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-black transition-all border-b-2 pb-2 border-transparent text-gray-400 hover:text-dark cursor-pointer shrink-0"
                 >
                     Chelsea Boots
                 </button>
                 <button 
                     data-filter="Ankle Boots" 
-                    class="filter-tab-btn text-[10.5px] uppercase tracking-[0.25em] font-black transition-all border-b-2 pb-2 border-transparent text-gray-400 hover:text-dark cursor-pointer"
+                    class="filter-tab-btn text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-black transition-all border-b-2 pb-2 border-transparent text-gray-400 hover:text-dark cursor-pointer shrink-0"
                 >
                     Ankle Boots
                 </button>
                 <button 
                     data-filter="Derby Shoes" 
-                    class="filter-tab-btn text-[10.5px] uppercase tracking-[0.25em] font-black transition-all border-b-2 pb-2 border-transparent text-gray-400 hover:text-dark cursor-pointer"
+                    class="filter-tab-btn text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-black transition-all border-b-2 pb-2 border-transparent text-gray-400 hover:text-dark cursor-pointer shrink-0"
                 >
                     Derby Shoes
                 </button>
                 <button 
                     data-filter="Loafers" 
-                    class="filter-tab-btn text-[10.5px] uppercase tracking-[0.25em] font-black transition-all border-b-2 pb-2 border-transparent text-gray-400 hover:text-dark cursor-pointer"
+                    class="filter-tab-btn text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-black transition-all border-b-2 pb-2 border-transparent text-gray-400 hover:text-dark cursor-pointer shrink-0"
                 >
                     Loafers
                 </button>

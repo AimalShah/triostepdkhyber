@@ -3,27 +3,27 @@ import { REVIEWS, REVIEW_METRICS } from '../../data/shop.reviews';
 ---
 
 <!-- BEGIN: Client Reviews & Reputation Section -->
-<section id="reviews" data-animate-section class="w-full bg-white py-24 md:py-32 border-t border-gray-100 scroll-mt-24">
-    <div class="max-w-[1440px] mx-auto px-6">
+<section id="reviews" data-animate-section class="w-full bg-white py-16 sm:py-24 md:py-32 border-t border-gray-100 scroll-mt-24">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 pb-12 border-b border-gray-100">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16 pb-8 sm:pb-12 border-b border-gray-100">
             <div>
                 <div class="inline-flex items-center gap-2 mb-3">
                     <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                    <span class="text-[10px] uppercase tracking-[0.35em] text-gray-400 font-black">
+                    <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.35em] text-gray-400 font-black">
                         Verified Reputation · Khyber Atelier
                     </span>
                 </div>
-                <h2 class="font-display text-4xl md:text-6xl font-bold uppercase tracking-tight text-dark leading-none">
+                <h2 class="font-display text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-dark leading-none">
                     Client <span class="text-gray-400">Experiences</span>
                 </h2>
             </div>
 
             {/* Score Summary Box */}
-            <div class="flex items-center gap-6 bg-gray-50/80 p-5 border border-gray-100 rounded-sm">
-                <div class="text-center border-r border-gray-200 pr-6">
-                    <span class="text-3xl md:text-4xl font-black text-dark tracking-tight leading-none block">
+            <div class="flex items-center gap-4 sm:gap-6 bg-gray-50/80 p-4 sm:p-5 border border-gray-100 rounded-sm">
+                <div class="text-center border-r border-gray-200 pr-4 sm:pr-6 shrink-0">
+                    <span class="text-2xl sm:text-4xl font-black text-dark tracking-tight leading-none block">
                         {REVIEW_METRICS.averageRating}
                     </span>
                     <div class="flex text-amber-500 text-xs mt-1 justify-center">
@@ -31,10 +31,10 @@ import { REVIEWS, REVIEW_METRICS } from '../../data/shop.reviews';
                     </div>
                 </div>
                 <div>
-                    <span class="text-[11px] font-bold text-dark uppercase tracking-wider block">
+                    <span class="text-[10px] sm:text-[11px] font-bold text-dark uppercase tracking-wider block">
                         Exceptional Satisfaction
                     </span>
-                    <span class="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold block mt-0.5">
+                    <span class="text-[8.5px] sm:text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold block mt-0.5">
                         Based on {REVIEW_METRICS.totalReviews.toLocaleString()} Verified Clients
                     </span>
                 </div>
@@ -42,22 +42,22 @@ import { REVIEWS, REVIEW_METRICS } from '../../data/shop.reviews';
         </div>
 
         {/* 4-Pillar Craftsmanship Trust Bar */}
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 py-6 px-6 bg-dark text-white rounded-sm">
-            <div class="text-center md:text-left border-r border-white/10 last:border-r-0 pr-4">
-                <p class="text-xl md:text-2xl font-black tracking-tight mb-0.5">{REVIEW_METRICS.craftsmanshipScore}</p>
-                <p class="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold">Client Satisfaction</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-y-6 gap-x-3 sm:gap-4 mb-12 sm:mb-16 py-5 sm:py-6 px-4 sm:px-6 bg-dark text-white rounded-sm">
+            <div class="text-center md:text-left border-r border-white/10 pr-2 sm:pr-4">
+                <p class="text-lg sm:text-xl md:text-2xl font-black tracking-tight mb-0.5">{REVIEW_METRICS.craftsmanshipScore}</p>
+                <p class="text-[8px] sm:text-[9px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-gray-400 font-bold">Client Satisfaction</p>
             </div>
-            <div class="text-center md:text-left border-r border-white/10 last:border-r-0 pr-4">
-                <p class="text-xl md:text-2xl font-black tracking-tight mb-0.5">{REVIEW_METRICS.fitScore}</p>
-                <p class="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold">True to Size Accuracy</p>
+            <div class="text-center md:text-left md:border-r md:border-white/10 pr-0 md:pr-4 pl-1 sm:pl-0">
+                <p class="text-lg sm:text-xl md:text-2xl font-black tracking-tight mb-0.5">{REVIEW_METRICS.fitScore}</p>
+                <p class="text-[8px] sm:text-[9px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-gray-400 font-bold">True to Size Accuracy</p>
             </div>
-            <div class="text-center md:text-left border-r border-white/10 last:border-r-0 pr-4">
-                <p class="text-xl md:text-2xl font-black tracking-tight mb-0.5">100% Full-Grain</p>
-                <p class="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold">Artisanal Calf Leather</p>
+            <div class="text-center md:text-left border-r border-white/10 pr-2 sm:pr-4 pt-4 md:pt-0 border-t md:border-t-0 border-white/10">
+                <p class="text-lg sm:text-xl md:text-2xl font-black tracking-tight mb-0.5">100% Full-Grain</p>
+                <p class="text-[8px] sm:text-[9px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-gray-400 font-bold">Artisanal Calf Leather</p>
             </div>
-            <div class="text-center md:text-left pr-4">
-                <p class="text-xl md:text-2xl font-black tracking-tight mb-0.5">14-Day Free</p>
-                <p class="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold">Doorstep Fit Exchanges</p>
+            <div class="text-center md:text-left pr-0 md:pr-4 pl-1 sm:pl-0 pt-4 md:pt-0 border-t md:border-t-0 border-white/10">
+                <p class="text-lg sm:text-xl md:text-2xl font-black tracking-tight mb-0.5">14-Day Free</p>
+                <p class="text-[8px] sm:text-[9px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-gray-400 font-bold">Doorstep Fit Exchanges</p>
             </div>
         </div>
 

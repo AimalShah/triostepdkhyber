@@ -9,37 +9,51 @@ import img6 from "../../assets/images/1000152095.jpg.jpeg";
 const images = [img1.src, img2.src, img3.src, img4.src, img5.src, img6.src];
 ---
 
-<section class="relative w-full h-screen bg-dark overflow-hidden flex items-center justify-center pt-16">
+<section class="relative w-full min-h-[88dvh] sm:min-h-screen bg-dark overflow-hidden flex items-center justify-center pt-14 sm:pt-16">
   
   <!-- Continuous Image Marquee -->
-  <div class="absolute inset-0 flex items-center overflow-x-hidden opacity-70 group">
+  <div class="absolute inset-0 flex items-center overflow-x-hidden opacity-60 sm:opacity-70 group pointer-events-none">
      <div class="flex animate-marquee-hero whitespace-nowrap h-[110vh] items-center group-hover:[animation-play-state:paused]">
         {images.map(img => (
-            <div class="h-[60vh] md:h-[80vh] aspect-[3/4] flex-shrink-0 mx-2 md:mx-4 overflow-hidden relative cursor-crosshair">
+            <div class="h-[50vh] sm:h-[65vh] md:h-[80vh] aspect-[3/4] flex-shrink-0 mx-2 md:mx-4 overflow-hidden relative cursor-crosshair">
                 <img src={img} alt="Triostepdekhyaber Lookbook" class="w-full h-full object-cover filter grayscale hover:grayscale-0 hover:scale-105 transition-all duration-[1.5s] ease-out" />
             </div>
         ))}
      </div>
      <div class="flex animate-marquee-hero whitespace-nowrap h-[110vh] items-center group-hover:[animation-play-state:paused]" aria-hidden="true">
         {images.map(img => (
-            <div class="h-[60vh] md:h-[80vh] aspect-[3/4] flex-shrink-0 mx-2 md:mx-4 overflow-hidden relative cursor-crosshair">
+            <div class="h-[50vh] sm:h-[65vh] md:h-[80vh] aspect-[3/4] flex-shrink-0 mx-2 md:mx-4 overflow-hidden relative cursor-crosshair">
                 <img src={img} alt="Triostepdekhyaber Lookbook" class="w-full h-full object-cover filter grayscale hover:grayscale-0 hover:scale-105 transition-all duration-[1.5s] ease-out" />
             </div>
         ))}
      </div>
   </div>
 
-  <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-dark/50 pointer-events-none"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-dark/60 pointer-events-none"></div>
 
   <!-- Center Typography Overlay -->
-  <div class="relative z-20 flex flex-col items-center justify-center text-center px-4 pointer-events-auto h-full pb-10">
-      <h1 class="font-display text-[9vw] lg:text-[7vw] font-bold uppercase tracking-tighter text-white leading-none mb-4 mix-blend-overlay drop-shadow-2xl">Triostepdekhyaber</h1>
-      <p class="text-white text-xs md:text-sm font-bold tracking-[0.4em] uppercase mb-12 max-w-xl text-center">
+  <div class="relative z-20 flex flex-col items-center justify-center text-center px-4 sm:px-6 pointer-events-auto h-full py-16 sm:py-20 max-w-4xl mx-auto">
+      <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 bg-white/10 backdrop-blur-md border border-white/15 text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.3em] font-bold text-gray-200">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Archival Craftsmanship</span>
+      </div>
+
+      <h1 class="font-display text-4xl sm:text-6xl md:text-8xl lg:text-[7vw] font-bold uppercase tracking-tight sm:tracking-tighter text-white leading-[0.95] sm:leading-none mb-4 mix-blend-overlay drop-shadow-2xl break-words max-w-full">
+          Triostepdekhyaber
+      </h1>
+
+      <p class="text-gray-300 text-[10px] sm:text-xs md:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.4em] uppercase mb-8 sm:mb-12 max-w-md sm:max-w-xl text-center leading-relaxed">
           The New Standard of Heritage Footwear
       </p>
-      <a href="/shop" class="bg-white text-dark px-12 py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-all duration-500 hover:shadow-2xl hover:scale-105">
-          Enter The Shop
-      </a>
+
+      <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+          <a href="/shop" class="w-full sm:w-auto text-center bg-white text-dark px-8 sm:px-12 py-3.5 sm:py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-all duration-300 shadow-2xl hover:scale-105">
+              Enter The Shop
+          </a>
+          <a href="/collections" class="w-full sm:w-auto text-center bg-white/10 hover:bg-white/20 text-white border border-white/25 px-7 py-3.5 sm:py-5 text-xs font-bold uppercase tracking-[0.2em] transition-all backdrop-blur-sm">
+              Explore Collections
+          </a>
+      </div>
   </div>
   
   <style>

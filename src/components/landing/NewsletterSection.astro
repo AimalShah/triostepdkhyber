@@ -1,22 +1,35 @@
 <!-- BEGIN: Newsletter -->
-<section data-animate-section class="max-w-[1440px] mx-auto px-4 sm:px-6 py-16 md:py-24 border-t border-gray-200">
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
+<section data-animate-section class="max-w-[1440px] mx-auto px-4 sm:px-6 py-14 sm:py-20 md:py-28 border-t border-gray-200">
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
 		<div>
-			<h2 class="font-display text-2xl md:text-3xl font-bold uppercase tracking-tight mb-4">Get a Discount</h2>
+			<div class="inline-flex items-center gap-2 mb-2">
+				<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+				<span class="text-[9px] uppercase tracking-[0.35em] text-gray-400 font-bold">Privilege Member Club</span>
+			</div>
+			<h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-dark mb-2">
+				Atelier Newsletter
+			</h2>
+			<p class="text-xs text-gray-500 font-light">
+				Receive Rs 1,500 privilege voucher towards your first order.
+			</p>
 		</div>
 		<div>
-			<p class="text-[11px] text-gray-500 mb-6 max-w-xs">
-				Receive 500 rubles when subscribing to the newsletter! Be the first to know about brand news.
+			<p class="text-xs text-gray-500 mb-5 max-w-md font-light leading-relaxed">
+				Subscribe to the Triostepdekhyaber chronicle. Gain priority access to limited archival releases, leather care advice, and private seasonal invitations.
 			</p>
-			<form class="flex flex-col sm:flex-row sm:items-center gap-3 border-b border-gray-300 pb-2">
+			<form class="flex items-center gap-2 border-b-2 border-dark pb-2 group focus-within:border-black transition-colors">
 				<input
-					class="w-full bg-transparent border-none text-[11px] p-0 focus:ring-0 placeholder-gray-400 focus:outline-none"
+					class="w-full bg-transparent border-none text-xs sm:text-sm py-1 px-0 focus:ring-0 placeholder-gray-400 focus:outline-none text-dark font-medium"
 					type="email"
-					placeholder="e-mail"
+					placeholder="Enter your email address"
 					required
 				/>
-				<button class="text-[11px] uppercase tracking-wider whitespace-nowrap hover:text-gray-500 transition-colors inline-flex items-center self-start sm:self-auto" type="submit">
-					Subscribe <span class="ml-1">↗</span>
+				<button 
+					class="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold whitespace-nowrap text-dark hover:text-gray-500 transition-colors inline-flex items-center gap-1 shrink-0 py-1 cursor-pointer" 
+					type="submit"
+				>
+					<span>Subscribe</span>
+					<span class="material-symbols-outlined text-sm">arrow_forward</span>
 				</button>
 			</form>
 		</div>
