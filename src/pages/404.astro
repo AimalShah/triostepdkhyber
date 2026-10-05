@@ -1,0 +1,371 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProductCard from "../components/landing/ProductCard.astro";
+import { PRODUCTS } from "../data/shop.products";
+import { fmtPrice } from "../components/shop/ui/ShopAtoms";
+
+// Handpick 4 iconic silhouettes to assist lost visitors
+const featuredProducts = PRODUCTS.slice(0, 4);
+
+// Category shortcut data
+const categories = [
+    {
+        number: "01",
+        title: "Chelsea Boots",
+        description: "Our signature elasticated ankle silhouettes sculpted from top-grain calfskin.",
+        href: "/shop",
+        tag: "Core Atelier",
+    },
+    {
+        number: "02",
+        title: "Ankle & Lace-Up Boots",
+        description: "Rugged welted construction engineered for endurance, weather, and timeless presence.",
+        href: "/shop",
+        tag: "Heritage",
+    },
+    {
+        number: "03",
+        title: "Derbies & Dress Shoes",
+        description: "Sleek open-lacing cordwainery tailored for both formal engagements and relaxed tailoring.",
+        href: "/shop",
+        tag: "Tailored",
+    },
+    {
+        number: "04",
+        title: "Loafers & Slip-Ons",
+        description: "Supple hand-stitched leisure footwear featuring unlined breathability and cushioned insoles.",
+        href: "/shop",
+        tag: "Casual Luxury",
+    },
+];
+
+const popularSearches = [
+    { label: "Chelsea Boots", query: "Chelsea" },
+    { label: "Black Boots", query: "Black" },
+    { label: "Derby Shoes", query: "Derby" },
+    { label: "Loafers", query: "Loafer" },
+    { label: "Archival Sale", href: "/sale" },
+    { label: "Our Story", href: "/about" },
+];
+---
+
+<Layout title="Page Not Found (404) | Triostepdekhyaber Handcrafted Footwear">
+    <main class="w-full bg-[#FAFAFA] text-dark min-h-screen selection:bg-dark selection:text-white">
+
+        <!-- Top Breadcrumb & Status Indicator -->
+        <div class="border-b border-gray-100 bg-white/60 backdrop-blur-md">
+            <div class="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between text-[11px] uppercase tracking-[0.25em]">
+                <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-gray-400">
+                    <a href="/" class="hover:text-dark transition-colors font-medium">Home</a>
+                    <span class="text-gray-300">/</span>
+                    <span class="text-dark font-bold">Error 404</span>
+                </nav>
+                <div class="flex items-center gap-2 font-medium text-gray-500">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
+                    <span class="text-[10px] tracking-[0.2em] uppercase font-bold text-gray-700">Atelier Route Uncharted</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero 404 Section -->
+        <section class="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 px-6 border-b border-gray-100">
+            <!-- Decorative Architectural Watermark Background -->
+            <div class="absolute inset-0 pointer-events-none select-none flex items-center justify-center opacity-[0.03] overflow-hidden">
+                <span class="font-display font-black text-[30vw] tracking-tighter text-dark leading-none">
+                    404
+                </span>
+            </div>
+
+            <!-- Subtle Grid Accent Lines -->
+            <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-40"></div>
+
+            <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
+                <!-- Atelier Badge -->
+                <div class="inline-flex items-center gap-2.5 px-4 py-1.5 bg-dark text-white text-[9px] uppercase tracking-[0.3em] font-bold mb-8 shadow-sm">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                    <span>Error Code 404 · Silhouette Missing</span>
+                </div>
+
+                <!-- Grand 404 Headline -->
+                <div class="relative mb-6">
+                    <h1 class="font-display text-8xl sm:text-9xl md:text-[13rem] font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-dark via-stone-800 to-gray-400 leading-none select-none">
+                        404
+                    </h1>
+                    <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-3 w-48 justify-center">
+                        <div class="h-px bg-gray-300 flex-1"></div>
+                        <span class="text-[9px] uppercase tracking-[0.35em] text-gray-400 font-bold bg-[#FAFAFA] px-2">Atelier File</span>
+                        <div class="h-px bg-gray-300 flex-1"></div>
+                    </div>
+                </div>
+
+                <h2 class="font-display text-2xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tight text-dark mt-6 mb-4">
+                    You've Stepped Off The Path
+                </h2>
+
+                <p class="max-w-xl text-gray-500 text-sm sm:text-base md:text-lg font-light leading-relaxed mb-10">
+                    The footwear silhouette, archival chapter, or destination you were seeking may have been renamed, retired to our private atelier, or never existed in this realm. Let us guide your stride back to handcrafted luxury.
+                </p>
+
+                <!-- In-page Live Search Form -->
+                <div class="w-full max-w-lg mb-8">
+                    <form id="four-oh-four-search" class="relative flex items-stretch shadow-md hover:shadow-lg transition-shadow duration-300">
+                        <div class="relative flex-1">
+                            <label for="err-search-input" class="sr-only">Search footwear collection</label>
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 material-symbols-outlined text-[20px] pointer-events-none select-none">
+                                search
+                            </span>
+                            <input
+                                type="text"
+                                id="err-search-input"
+                                name="q"
+                                placeholder="Search Chelsea boots, loafers, derbies..."
+                                class="w-full pl-12 pr-4 py-3.5 bg-white border border-gray-200 text-dark placeholder-gray-400 text-sm focus:outline-none focus:border-dark focus:ring-1 focus:ring-dark transition-colors"
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            class="bg-dark hover:bg-black text-white px-6 py-3.5 text-xs font-bold uppercase tracking-[0.2em] transition-colors shrink-0 flex items-center gap-1.5"
+                        >
+                            <span>Search</span>
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </button>
+                    </form>
+
+                    <!-- Popular Search Chips -->
+                    <div class="flex flex-wrap items-center justify-center gap-2 mt-4 text-[10px] tracking-wider uppercase">
+                        <span class="text-gray-400 font-medium mr-1">Quick Suggestions:</span>
+                        {popularSearches.map((item) => (
+                            item.href ? (
+                                <a
+                                    href={item.href}
+                                    class="px-2.5 py-1 bg-white border border-gray-200 hover:border-dark text-gray-700 hover:text-dark transition-colors font-medium"
+                                >
+                                    {item.label}
+                                </a>
+                            ) : (
+                                <a
+                                    href={`/shop`}
+                                    data-search-keyword={item.query}
+                                    class="search-chip px-2.5 py-1 bg-white border border-gray-200 hover:border-dark text-gray-700 hover:text-dark transition-colors font-medium cursor-pointer"
+                                >
+                                    {item.label}
+                                </a>
+                            )
+                        ))}
+                    </div>
+                </div>
+
+                <!-- Primary Action Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                    <a
+                        href="/"
+                        class="inline-flex items-center gap-2 bg-dark hover:bg-black text-white px-7 py-4 text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5"
+                    >
+                        <span class="material-symbols-outlined text-base">home</span>
+                        <span>Return To Home</span>
+                    </a>
+
+                    <a
+                        href="/shop"
+                        class="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-dark border border-dark px-7 py-4 text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300 hover:-translate-y-0.5"
+                    >
+                        <span class="material-symbols-outlined text-base">storefront</span>
+                        <span>Browse Catalog</span>
+                    </a>
+
+                    <button
+                        type="button"
+                        id="go-back-btn"
+                        class="inline-flex items-center gap-2 bg-transparent hover:bg-gray-100 text-gray-600 hover:text-dark px-5 py-4 text-xs font-semibold uppercase tracking-[0.2em] transition-colors"
+                    >
+                        <span class="material-symbols-outlined text-base">arrow_back</span>
+                        <span>Go Back</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curated Pathways / Category Grid -->
+        <section class="max-w-[1440px] mx-auto px-6 py-20 border-b border-gray-100">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <span class="text-[10px] uppercase tracking-[0.35em] text-gray-400 font-bold block mb-2">
+                        Atelier Directory
+                    </span>
+                    <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-dark">
+                        Explore By Category
+                    </h2>
+                </div>
+                <p class="text-xs uppercase tracking-[0.2em] text-gray-500 max-w-sm">
+                    Re-orient your discovery through our principal cordwainery collections.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {categories.map((cat) => (
+                    <a
+                        href={cat.href}
+                        class="group relative bg-white border border-gray-200 p-8 flex flex-col justify-between hover:border-dark hover:shadow-xl transition-all duration-500 overflow-hidden"
+                    >
+                        <!-- Top Bar: Index & Tag -->
+                        <div class="flex items-center justify-between mb-8">
+                            <span class="font-display text-lg font-black text-gray-300 group-hover:text-dark transition-colors">
+                                {cat.number}
+                            </span>
+                            <span class="text-[9px] uppercase tracking-[0.25em] font-bold text-gray-400 bg-gray-50 px-2 py-0.5 border border-gray-100 group-hover:bg-dark group-hover:text-white transition-colors">
+                                {cat.tag}
+                            </span>
+                        </div>
+
+                        <!-- Main Content -->
+                        <div class="mb-10">
+                            <h3 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-dark mb-3 group-hover:translate-x-1 transition-transform duration-300">
+                                {cat.title}
+                            </h3>
+                            <p class="text-xs text-gray-500 font-light leading-relaxed">
+                                {cat.description}
+                            </p>
+                        </div>
+
+                        <!-- Bottom Link Indicator -->
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-[10px] uppercase tracking-[0.25em] font-bold text-dark group-hover:underline">
+                                View Collection
+                            </span>
+                            <span class="material-symbols-outlined text-dark text-base transform group-hover:translate-x-1.5 transition-transform duration-300">
+                                arrow_forward
+                            </span>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </section>
+
+        <!-- Handcrafted Silhouettes You Might Love (Product Recovery Section) -->
+        <section class="max-w-[1440px] mx-auto px-6 py-20 border-b border-gray-100">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <span class="text-[10px] uppercase tracking-[0.35em] text-gray-400 font-bold block mb-2">
+                        Iconic Footwear
+                    </span>
+                    <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-dark">
+                        Bestselling Silhouettes
+                    </h2>
+                </div>
+                <a
+                    href="/shop"
+                    class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-bold text-dark hover:text-gray-600 transition-colors group"
+                >
+                    <span>View All 39 Atelier Pairs</span>
+                    <span class="material-symbols-outlined text-sm transform group-hover:translate-x-1 transition-transform">
+                        arrow_forward
+                    </span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                {featuredProducts.map((p) => (
+                    <ProductCard
+                        id={p.id}
+                        title={p.name}
+                        priceLabel={fmtPrice(p.price)}
+                        originalPriceLabel={p.originalPrice > p.price ? fmtPrice(p.originalPrice) : undefined}
+                        imageSrc={p.image}
+                        imageAlt={p.name}
+                        category={p.category}
+                        color={p.color}
+                        rating={p.rating}
+                        reviews={p.reviews}
+                        badge={p.badge}
+                        inStock={p.inStock}
+                    />
+                ))}
+            </div>
+        </section>
+
+        <!-- Atelier Concierge Assistance Banner -->
+        <section class="max-w-[1440px] mx-auto px-6 py-16">
+            <div class="bg-dark text-white p-8 sm:p-12 md:p-16 relative overflow-hidden flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+                <!-- Background Geometric Motif -->
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full border border-white/5 pointer-events-none"></div>
+                <div class="absolute -right-10 -bottom-10 w-60 h-60 rounded-full border border-white/10 pointer-events-none"></div>
+
+                <div class="relative z-10 max-w-xl">
+                    <span class="text-[9px] uppercase tracking-[0.35em] font-bold text-amber-400 block mb-3">
+                        Personal Concierge Desk
+                    </span>
+                    <h3 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-white mb-4">
+                        Seeking A Specific Pair Or Archive?
+                    </h3>
+                    <p class="text-sm text-gray-300 font-light leading-relaxed">
+                        If you have an exact model name, custom size request, or inquiry regarding an older edition, our master artisans and concierge team are available via WhatsApp or direct line.
+                    </p>
+                </div>
+
+                <div class="relative z-10 flex flex-wrap items-center gap-4 shrink-0">
+                    <a
+                        href="https://wa.me/923000000000"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3.5 text-xs font-bold uppercase tracking-[0.2em] transition-all shadow-md hover:shadow-emerald-900/50"
+                    >
+                        <span class="material-symbols-outlined text-base">chat</span>
+                        <span>WhatsApp Concierge</span>
+                    </a>
+                    <a
+                        href="/about"
+                        class="inline-flex items-center gap-2 border border-white/30 hover:border-white text-white px-6 py-3.5 text-xs font-bold uppercase tracking-[0.2em] transition-colors"
+                    >
+                        <span>Atelier Story</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Client-side navigation & search handlers -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Search Form Handler
+            const searchForm = document.getElementById('four-oh-four-search') as HTMLFormElement | null;
+            const searchInput = document.getElementById('err-search-input') as HTMLInputElement | null;
+
+            if (searchForm && searchInput) {
+                searchForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const query = searchInput.value.trim();
+                    if (query) {
+                        window.location.href = `/shop?search=${encodeURIComponent(query)}`;
+                    } else {
+                        window.location.href = '/shop';
+                    }
+                });
+            }
+
+            // Quick Search Chips
+            const chips = document.querySelectorAll('.search-chip');
+            chips.forEach((chip) => {
+                chip.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const keyword = (chip as HTMLElement).dataset.searchKeyword;
+                    if (keyword) {
+                        window.location.href = `/shop?search=${encodeURIComponent(keyword)}`;
+                    }
+                });
+            });
+
+            // Go Back Handler
+            const goBackBtn = document.getElementById('go-back-btn');
+            if (goBackBtn) {
+                goBackBtn.addEventListener('click', () => {
+                    if (window.history.length > 1) {
+                        window.history.back();
+                    } else {
+                        window.location.href = '/';
+                    }
+                });
+            }
+        });
+    </script>
+</Layout>
