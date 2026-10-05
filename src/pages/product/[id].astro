@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { PRODUCTS } from "../../data/shop.products";
 import ProductActions from "../../components/shop/ui/ProductActions";
 import ProductCard from "../../components/landing/ProductCard.astro";
+import ProductReviews from "../../components/shop/ui/ProductReviews";
 import { fmtPrice } from "../../components/shop/ui/ShopAtoms";
 
 export async function getStaticPaths() {
@@ -89,14 +90,14 @@ const relatedProducts = PRODUCTS.filter(
                         <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-dark mb-4 uppercase">
                             {product.name}
                         </h1>
-                        <div class="flex items-center gap-4">
-                            <div class="flex text-dark text-xs gap-0.5">
-                                {[...Array(5)].map((_, i) => (
-                                    <span class={i < Math.round(product.rating) ? 'opacity-100' : 'opacity-20'}>●</span>
-                                ))}
+                        <a href="#reviews" class="flex items-center gap-3 group/rev hover:opacity-80 transition-opacity">
+                            <div class="flex text-amber-500 text-xs tracking-wider">
+                                {'★'.repeat(Math.round(product.rating))}{'☆'.repeat(5 - Math.round(product.rating))}
                             </div>
-                            <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Based on {product.reviews} reviews</span>
-                        </div>
+                            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-bold group-hover/rev:underline">
+                                {product.rating.toFixed(1)} · {product.reviews} Verified Reviews
+                            </span>
+                        </a>
                     </div>
 
                     <ProductActions product={product} client:load />
@@ -120,18 +121,34 @@ const relatedProducts = PRODUCTS.filter(
             </div>
         </section>
 
+        {/* Customer Reviews Section */}
+        <ProductReviews product={product} client:load />
+
         {/* You May Also Like */}
         {relatedProducts.length > 0 && (
             <section class="max-w-[1440px] mx-auto px-6 py-24 border-t border-gray-100">
-                <h2 class="text-xl md:text-2xl font-bold uppercase tracking-tight text-dark mb-12">Complete The Look</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="flex items-end justify-between mb-12">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-[0.35em] text-gray-400 font-bold block mb-2">Curated Pairings</span>
+                        <h2 class="text-2xl md:text-3xl font-bold uppercase tracking-tight text-dark">Complete The Look</h2>
+                    </div>
+                    <a href="/shop" class="text-[10px] uppercase tracking-widest text-dark font-bold hover:underline">View All →</a>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
                     {relatedProducts.map((p) => (
                         <ProductCard
                             id={p.id}
                             title={p.name}
                             priceLabel={fmtPrice(p.price)}
+                            originalPriceLabel={p.originalPrice > p.price ? fmtPrice(p.originalPrice) : undefined}
                             imageSrc={p.image}
                             imageAlt={p.name}
+                            category={p.category}
+                            color={p.color}
+                            rating={p.rating}
+                            reviews={p.reviews}
+                            badge={p.badge}
+                            inStock={p.inStock}
                         />
                     ))}
                 </div>

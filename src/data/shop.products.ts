@@ -112,7 +112,7 @@ const ALL_IMAGES = {
   '1000152809.jpg.jpeg': (img_1000152809 as any).src || img_1000152809,
 };
 export const PRODUCTS: Product[] = [
-  { id: 1, name: 'Premium Black Chelsea Boot', category: 'Chelsea Boots', color: 'Black', price: 15000, originalPrice: 20000, rating: 4.0, reviews: 20, sizes: [39, 40, 41, 42, 43], badge: 'New', sku: 'TR-001', inStock: true, image: ALL_IMAGES['1000151679.jpg.jpeg'] },
+  { id: 1, name: 'Premium Black Chelsea Boot', category: 'Chelsea Boots', color: 'Black', price: 15000, originalPrice: 20000, rating: 4.0, reviews: 20, sizes: [39, 40, 41, 42, 43], badge: 'New', sku: 'TR-001', inStock: true, image: ALL_IMAGES['1000152082.jpg.jpeg'] },
   { id: 2, name: 'Premium Brown Ankle Boot', category: 'Ankle Boots', color: 'Brown', price: 15500, originalPrice: 15500, rating: 4.1, reviews: 23, sizes: [39, 40, 41, 42, 43], badge: 'Bestseller', sku: 'TR-002', inStock: true, image: ALL_IMAGES['1000151766.jpg.jpeg'] },
   { id: 3, name: 'Premium Tan Derby Shoe', category: 'Derby Shoes', color: 'Tan', price: 16000, originalPrice: 16000, rating: 4.2, reviews: 26, sizes: [39, 40, 41, 42, 43], badge: 'Sale', sku: 'TR-003', inStock: true, image: ALL_IMAGES['1000151768.jpg.jpeg'] },
   { id: 4, name: 'Premium White Loafer', category: 'Loafers', color: 'White', price: 16500, originalPrice: 21500, rating: 4.3, reviews: 29, sizes: [39, 40, 41, 42, 43], badge: 'Hot', sku: 'TR-004', inStock: true, image: ALL_IMAGES['1000151770.jpg.jpeg'] },

@@ -1,67 +1,186 @@
 ---
 /**
- * ShopHero — editorial banner above the product catalog.
- * Mirrors the design pattern from HeroSection.astro.
- * Background: local campaign videos autoplay looped behind the overlay.
+ * ShopHero — editorial campaign hero banner above the product catalog.
+ * High-aesthetic luxury editorial design with real video background,
+ * sound control, campaign film switcher, quick-filter jump links,
+ * and architectural craftsmanship stats.
  */
 ---
 
 <!-- Editorial Hero Section -->
-<section class="w-full relative bg-dark overflow-hidden min-h-[50vh] md:min-h-[60vh] flex flex-col justify-center">
-    <!-- Video Background -->
-    <div class="absolute inset-0 z-0">
+<section class="w-full relative bg-dark overflow-hidden min-h-[60vh] md:min-h-[75vh] flex flex-col justify-between py-12 text-white">
+    <!-- Video Background Container -->
+    <div class="absolute inset-0 z-0 overflow-hidden">
         <video
             id="shop-hero-video"
-            class="w-full h-full object-cover object-center opacity-80 mix-blend-luminosity scale-105"
+            class="w-full h-full object-cover object-center opacity-70 mix-blend-luminosity scale-105 transition-all duration-1000"
             autoplay
             muted
             playsinline
+            loop
             preload="auto"
         >
             <source src="/videos/Black_leather_boots_on_grass.mp4" type="video/mp4" />
             <source src="/videos/Leather_boots_on_metallic_surface.mp4" type="video/mp4" />
         </video>
-        <div class="absolute inset-0 bg-gradient-to-r from-dark/90 via-dark/40 to-transparent"></div>
+        {/* Luxury Vignette and Contrast Gradients */}
+        <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-dark/80"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-dark/95 via-dark/60 to-transparent"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.06)_0%,transparent_70%)]"></div>
     </div>
 
-    <!-- Content Overlay -->
-    <div class="relative z-10 max-w-[1440px] mx-auto px-6 w-full py-20">
-        <div class="max-w-2xl">
-            <span class="text-[10px] uppercase tracking-[0.5em] text-gray-400 font-black mb-6 block">Collection 2024</span>
-            <h1 class="font-display text-6xl md:text-[8rem] font-bold uppercase leading-[0.8] tracking-tighter text-white mb-8">
-                The <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Archive</span>
-            </h1>
-            <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 mt-12 border-l border-white/20 pl-8">
-                <p class="text-[12px] uppercase tracking-[0.2em] font-light max-w-xs text-gray-300 leading-relaxed">
-                    A comprehensive curation of footwear, merging architectural silhouettes with timeless craftsmanship.
-                </p>
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-px bg-white/40"></div>
-                    <span class="text-[10px] uppercase tracking-[0.3em] font-black text-white italic">Explore All {71} Styles</span>
-                </div>
+    <!-- Top Utility Ribbon in Hero -->
+    <div class="relative z-10 max-w-[1440px] mx-auto px-6 w-full pt-4">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-5">
+            <div class="flex items-center gap-3">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-[9px] uppercase tracking-[0.4em] font-bold text-gray-300">
+                    Triostepdekhyaber · Autumn-Winter Atelier Catalog
+                </span>
+            </div>
+
+            <div class="flex items-center gap-3">
+                {/* Switch Video Button */}
+                <button
+                    id="shop-switch-video-btn"
+                    class="px-3 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-[9px] uppercase tracking-widest text-gray-300 hover:text-white hover:border-white/50 transition-all duration-300 flex items-center gap-1.5"
+                >
+                    <svg viewBox="0 0 24 24" class="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    <span id="shop-campaign-title">Film: Grassland</span>
+                </button>
+
+                {/* Sound Toggle */}
+                <button
+                    id="shop-sound-toggle"
+                    aria-label="Toggle hero audio"
+                    class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-[9px] uppercase tracking-widest text-gray-300 hover:text-white hover:border-white/50 transition-all duration-300"
+                >
+                    <svg id="shop-sound-icon" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                    </svg>
+                    <span id="shop-sound-text">Sound: Off</span>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Subtle Geometric Detail -->
-    <div class="absolute bottom-0 right-0 w-1/3 h-full border-l border-white/5 pointer-events-none hidden md:block"></div>
+    <!-- Center Content Overlay -->
+    <div class="relative z-10 max-w-[1440px] mx-auto px-6 w-full my-auto py-10">
+        <div class="max-w-3xl">
+            <span class="text-[10px] uppercase tracking-[0.6em] text-gray-400 font-black mb-4 block">
+                The Heritage Catalog · Edition 2024
+            </span>
+            <h1 class="font-display text-6xl sm:text-7xl md:text-[8.5rem] font-bold uppercase leading-[0.82] tracking-tighter text-white mb-8">
+                The <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500">Archive</span>
+            </h1>
+
+            <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 mt-6 border-l-2 border-white/30 pl-6 sm:pl-8">
+                <p class="text-[12px] sm:text-[13px] uppercase tracking-[0.2em] font-light max-w-sm text-gray-300 leading-relaxed">
+                    A comprehensive curation of handcrafted footwear, merging timeless architectural silhouettes with generational Khyber leather craftsmanship.
+                </p>
+                <div class="flex flex-col gap-2">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-px bg-white/50"></div>
+                        <span class="text-[10px] uppercase tracking-[0.3em] font-black text-white italic">
+                            Full Release · 39 Articles
+                        </span>
+                    </div>
+                    <span class="text-[9px] uppercase tracking-widest text-gray-400 pl-13">
+                        Coordinates: 34.0151° N, 71.5249° E
+                    </span>
+                </div>
+            </div>
+
+            {/* Quick jump to silhouttes */}
+            <div class="mt-10 flex flex-wrap items-center gap-2">
+                <span class="text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold mr-2">
+                    Quick Jump:
+                </span>
+                {['Chelsea Boots', 'Ankle Boots', 'Derby Shoes', 'Loafers', 'Sneakers'].map(cat => (
+                    <a
+                        href={`/shop?category=${encodeURIComponent(cat)}`}
+                        class="px-3.5 py-1.5 bg-white/10 hover:bg-white text-white hover:text-dark backdrop-blur-md border border-white/20 text-[9px] uppercase tracking-[0.2em] font-bold transition-all duration-300 transform hover:-translate-y-0.5"
+                    >
+                        {cat}
+                    </a>
+                ))}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Architectural Pillars Ribbon -->
+    <div class="relative z-10 max-w-[1440px] mx-auto px-6 w-full">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-white/10 text-left">
+            <div>
+                <span class="block text-[8px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-1">Curation</span>
+                <strong class="text-sm md:text-base font-bold tracking-tight text-white">39 Master Articles</strong>
+            </div>
+            <div>
+                <span class="block text-[8px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-1">Leather Standard</span>
+                <strong class="text-sm md:text-base font-bold tracking-tight text-white">Full-Grain Calfskin</strong>
+            </div>
+            <div>
+                <span class="block text-[8px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-1">Construction</span>
+                <strong class="text-sm md:text-base font-bold tracking-tight text-white">Goodyear-Welt Method</strong>
+            </div>
+            <div>
+                <span class="block text-[8px] uppercase tracking-[0.3em] text-gray-400 font-bold mb-1">Complimentary Delivery</span>
+                <strong class="text-sm md:text-base font-bold tracking-tight text-white">Orders Over 25,000Rs</strong>
+            </div>
+        </div>
+    </div>
 </section>
 
 <script>
-    // Cycle through the two campaign videos seamlessly
+    // Video Sound & Cycling Control
     const video = document.getElementById('shop-hero-video') as HTMLVideoElement | null;
+    const soundToggle = document.getElementById('shop-sound-toggle');
+    const soundIcon = document.getElementById('shop-sound-icon');
+    const soundText = document.getElementById('shop-sound-text');
+    const switchBtn = document.getElementById('shop-switch-video-btn');
+    const campaignTitle = document.getElementById('shop-campaign-title');
+
     const sources = [
-        '/videos/Black_leather_boots_on_grass.mp4',
-        '/videos/Leather_boots_on_metallic_surface.mp4',
+        { url: '/videos/Black_leather_boots_on_grass.mp4', title: 'Film: Grassland' },
+        { url: '/videos/Leather_boots_on_metallic_surface.mp4', title: 'Film: Metallic Atelier' }
     ];
-    let idx = 0;
+    let currentIdx = 0;
+
+    const mutedSvg = `<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>`;
+    const unmutedSvg = `<path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3zm10-5.51v1.54C15.18 5.96 17 8.82 17 12s-1.82 6.04-4 6.97v1.54C16.25 19.38 19 16 19 12s-2.75-7.38-6-8.51z"/>`;
+
+    if (soundToggle && video && soundIcon && soundText) {
+        soundToggle.addEventListener('click', () => {
+            video.muted = !video.muted;
+            if (video.muted) {
+                soundIcon.innerHTML = mutedSvg;
+                soundText.textContent = 'Sound: Off';
+            } else {
+                soundIcon.innerHTML = unmutedSvg;
+                soundText.textContent = 'Sound: On';
+            }
+        });
+    }
+
+    if (switchBtn && video && campaignTitle) {
+        switchBtn.addEventListener('click', () => {
+            currentIdx = (currentIdx + 1) % sources.length;
+            video.src = sources[currentIdx].url;
+            campaignTitle.textContent = sources[currentIdx].title;
+            video.load();
+            video.play().catch(() => {/* handle autoplay restrictions */});
+        });
+    }
 
     if (video) {
         video.addEventListener('ended', () => {
-            idx = (idx + 1) % sources.length;
-            video.src = sources[idx];
+            currentIdx = (currentIdx + 1) % sources.length;
+            video.src = sources[currentIdx].url;
+            if (campaignTitle) campaignTitle.textContent = sources[currentIdx].title;
             video.load();
-            video.play().catch(() => {/* autoplay blocked: silently skip */});
+            video.play().catch(() => {/* handle autoplay restrictions */});
         });
     }
 </script>

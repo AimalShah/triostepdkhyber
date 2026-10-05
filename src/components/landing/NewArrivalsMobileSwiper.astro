@@ -30,6 +30,11 @@ const { products } = Astro.props;
                     >
                         <div class="relative group flex flex-col w-full h-full p-4 bg-white transition-all">
                             <div class="relative aspect-[4/5] overflow-hidden bg-[#F9F9F9] mb-4">
+                                {product.badge && (
+                                    <span class="absolute top-2 left-2 z-10 text-[7px] font-bold uppercase tracking-[0.2em] bg-dark text-white px-2 py-0.5">
+                                        {product.badge}
+                                    </span>
+                                )}
                                 <div class="absolute top-3 right-3 z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-2 group-hover:translate-x-0">
                                     <WishlistToggle productId={product.id} client:load />
                                 </div>
@@ -46,11 +51,20 @@ const { products } = Astro.props;
                                 </a>
                             </div>
                             
-                            <a href={`/product/${product.id}`} class="flex flex-col text-left no-underline text-inherit group-hover:text-gray-500 transition-colors z-10">
-                                <p class="text-[8px] uppercase tracking-[0.25em] text-gray-400 font-bold mb-1">New Arrival</p>
-                                <h3 class="text-[12px] font-bold tracking-tight text-dark mb-2 truncate">{product.name}</h3>
-                                <p class="text-[12px] font-bold tracking-tighter text-dark">{fmtPrice(product.price)}</p>
-                            </a>
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-[8px] uppercase tracking-[0.25em] text-gray-400 font-bold">{product.category}</span>
+                                    <div class="flex items-center gap-1 text-[8px] text-dark">
+                                        <span class="text-amber-500">★</span>
+                                        <span class="font-bold">{product.rating.toFixed(1)}</span>
+                                    </div>
+                                </div>
+                                <h3 class="text-[12px] font-bold tracking-tight text-dark mb-1.5 truncate">{product.name}</h3>
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-[12px] font-bold tracking-tighter text-dark">{fmtPrice(product.price)}</span>
+                                    {product.originalPrice > product.price && (
+                                        <span class="text-[9px] text-gray-400 line-through">{fmtPrice(product.originalPrice)}</span>
+                                    )}
+                                </div>
                         </div>
                     </div>
                 ))

@@ -1,0 +1,160 @@
+---
+import { REVIEWS, REVIEW_METRICS } from '../../data/shop.reviews';
+---
+
+<!-- BEGIN: Client Reviews & Reputation Section -->
+<section id="reviews" data-animate-section class="w-full bg-white py-24 md:py-32 border-t border-gray-100 scroll-mt-24">
+    <div class="max-w-[1440px] mx-auto px-6">
+        
+        {/* Section Header */}
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 pb-12 border-b border-gray-100">
+            <div>
+                <div class="inline-flex items-center gap-2 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span class="text-[10px] uppercase tracking-[0.35em] text-gray-400 font-black">
+                        Verified Reputation · Khyber Atelier
+                    </span>
+                </div>
+                <h2 class="font-display text-4xl md:text-6xl font-bold uppercase tracking-tight text-dark leading-none">
+                    Client <span class="text-gray-400">Experiences</span>
+                </h2>
+            </div>
+
+            {/* Score Summary Box */}
+            <div class="flex items-center gap-6 bg-gray-50/80 p-5 border border-gray-100 rounded-sm">
+                <div class="text-center border-r border-gray-200 pr-6">
+                    <span class="text-3xl md:text-4xl font-black text-dark tracking-tight leading-none block">
+                        {REVIEW_METRICS.averageRating}
+                    </span>
+                    <div class="flex text-amber-500 text-xs mt-1 justify-center">
+                        {'★★★★★'}
+                    </div>
+                </div>
+                <div>
+                    <span class="text-[11px] font-bold text-dark uppercase tracking-wider block">
+                        Exceptional Satisfaction
+                    </span>
+                    <span class="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold block mt-0.5">
+                        Based on {REVIEW_METRICS.totalReviews.toLocaleString()} Verified Clients
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        {/* 4-Pillar Craftsmanship Trust Bar */}
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 py-6 px-6 bg-dark text-white rounded-sm">
+            <div class="text-center md:text-left border-r border-white/10 last:border-r-0 pr-4">
+                <p class="text-xl md:text-2xl font-black tracking-tight mb-0.5">{REVIEW_METRICS.craftsmanshipScore}</p>
+                <p class="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold">Client Satisfaction</p>
+            </div>
+            <div class="text-center md:text-left border-r border-white/10 last:border-r-0 pr-4">
+                <p class="text-xl md:text-2xl font-black tracking-tight mb-0.5">{REVIEW_METRICS.fitScore}</p>
+                <p class="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold">True to Size Accuracy</p>
+            </div>
+            <div class="text-center md:text-left border-r border-white/10 last:border-r-0 pr-4">
+                <p class="text-xl md:text-2xl font-black tracking-tight mb-0.5">100% Full-Grain</p>
+                <p class="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold">Artisanal Calf Leather</p>
+            </div>
+            <div class="text-center md:text-left pr-4">
+                <p class="text-xl md:text-2xl font-black tracking-tight mb-0.5">14-Day Free</p>
+                <p class="text-[9px] uppercase tracking-[0.2em] text-gray-400 font-bold">Doorstep Fit Exchanges</p>
+            </div>
+        </div>
+
+        {/* Reviews Cards Grid */}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {
+                REVIEWS.map((rev) => (
+                    <div class="review-card bg-[#FAFAFA] border border-gray-100 p-7 sm:p-8 flex flex-col justify-between hover:border-dark hover:shadow-lg transition-all duration-300">
+                        <div>
+                            {/* Stars & Verified Badge */}
+                            <div class="flex items-center justify-between gap-2 mb-4">
+                                <div class="flex text-amber-500 text-xs tracking-wider">
+                                    {'★'.repeat(rev.rating)}{'☆'.repeat(5 - rev.rating)}
+                                </div>
+                                <span class="inline-flex items-center gap-1 text-[8px] uppercase tracking-widest font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                                    <svg class="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Verified Buyer
+                                </span>
+                            </div>
+
+                            {/* Title */}
+                            <h3 class="text-base font-bold text-dark tracking-tight mb-3">
+                                "{rev.title}"
+                            </h3>
+
+                            {/* Body */}
+                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed font-light mb-6">
+                                {rev.content}
+                            </p>
+                        </div>
+
+                        {/* Card Footer: Product & Author Details */}
+                        <div class="pt-4 border-t border-gray-200/80">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-[11px] font-bold text-dark tracking-tight">
+                                    {rev.author}
+                                </span>
+                                <span class="text-[10px] text-gray-400 font-medium">
+                                    {rev.city}
+                                </span>
+                            </div>
+
+                            <div class="flex items-center justify-between text-[9px] text-gray-400 font-bold uppercase tracking-wider">
+                                <span class="truncate max-w-[200px]" title={rev.productName}>
+                                    {rev.productName} · Size {rev.size}
+                                </span>
+                                <button class="helpful-btn hover:text-dark transition-colors flex items-center gap-1 cursor-pointer">
+                                    <span>Helpful</span>
+                                    <span>({rev.helpfulCount})</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        {/* Editorial Press / Craftsmanship Quote Banner */}
+        <div class="mt-16 p-8 md:p-12 bg-gray-50 border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+                <p class="text-[10px] uppercase tracking-[0.3em] font-black text-gray-400 mb-2">The Khyber Standard</p>
+                <blockquote class="text-lg md:text-2xl font-bold tracking-tight text-dark italic max-w-2xl">
+                    "Every pair is individually last-molded and inspected before packaging. Our promise is footwear that commands presence from day one."
+                </blockquote>
+            </div>
+            <a 
+                href="/shop" 
+                class="shrink-0 bg-dark text-white px-8 py-4 text-[10px] uppercase tracking-[0.25em] font-black hover:bg-black transition-all shadow-md"
+            >
+                Order Your Pair →
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    function initHelpfulButtons() {
+        const helpfulBtns = document.querySelectorAll('.helpful-btn');
+        helpfulBtns.forEach((btn) => {
+            let clicked = false;
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (clicked) return;
+                clicked = true;
+                const text = btn.textContent || '';
+                const match = text.match(/\((\d+)\)/);
+                if (match) {
+                    const newCount = parseInt(match[1], 10) + 1;
+                    btn.innerHTML = `<span class="text-emerald-700 font-black">✓ Thank you</span> <span>(${newCount})</span>`;
+                }
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', initHelpfulButtons);
+    document.addEventListener('astro:page-load', initHelpfulButtons);
+</script>
+<!-- END: Client Reviews & Reputation Section -->

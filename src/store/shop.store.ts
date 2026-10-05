@@ -4,7 +4,7 @@
 // ──────────────────────────────────────────────────────────────────────────────
 
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import { PRODUCTS, type Product } from '../data/shop.products';
 
 export interface CartItem {
@@ -133,6 +133,11 @@ export const useShopStore = create<ShopState>()(
     }),
     {
       name: 'triostepdekhyaber-shop-storage',
+      storage: createJSONStorage(() => (typeof window !== 'undefined' ? localStorage : {
+        getItem: () => null,
+        setItem: () => {},
+        removeItem: () => {},
+      })),
     }
   )
 );
