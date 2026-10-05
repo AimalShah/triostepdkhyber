@@ -1,5 +1,5 @@
 ---
-import { CAMPAIGN_IMAGE_URL } from '../../data/products';
+// VideoSection.astro — landing page campaign video block
 ---
 
 <!-- BEGIN: Video Section -->
@@ -7,26 +7,40 @@ import { CAMPAIGN_IMAGE_URL } from '../../data/products';
 	<div
 		data-animate-video-section
 		class="relative w-full aspect-video md:aspect-[21/9] overflow-hidden group cursor-pointer"
+		id="video-section-wrapper"
 	>
-		<img
+		<!-- Real campaign video, autoplay muted loop -->
+		<video
+			id="campaign-video"
 			class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
-			src={CAMPAIGN_IMAGE_URL}
-			alt="Collection Video Preview"
-			width={2400}
-			height={1029}
-			loading="lazy"
-		/>
-		<div data-animate-video-play class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+			autoplay
+			muted
+			playsinline
+			loop
+			preload="auto"
+		>
+			<source src="/videos/Leather_boots_on_metallic_surface.mp4" type="video/mp4" />
+			<source src="/videos/Black_leather_boots_on_grass.mp4" type="video/mp4" />
+		</video>
+
+		<!-- Play/Pause overlay (click to toggle sound) -->
+		<div
+			id="video-play-overlay"
+			data-animate-video-play
+			class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center"
+		>
 			<div
 				data-animate-video-play-inner
 				class="w-16 h-16 md:w-20 md:h-20 rounded-full border border-white/50 flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-300"
 			>
-				<span class="material-symbols-outlined text-white text-4xl md:text-5xl translate-x-1 select-none">
-					play_arrow
-				</span>
+				<!-- Sound icon (video is autoplay muted — click unmutes) -->
+				<svg id="video-sound-icon" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+					<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+				</svg>
 			</div>
 		</div>
 	</div>
+
 	<div data-animate-section class="px-6 sm:px-8 py-6 bg-white">
 		<p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium mb-1">Behind the craftsmanship</p>
 		<h3 class="font-display text-lg font-bold uppercase tracking-tight text-dark">
@@ -35,3 +49,19 @@ import { CAMPAIGN_IMAGE_URL } from '../../data/products';
 	</div>
 </section>
 <!-- END: Video Section -->
+
+<script>
+	const video = document.getElementById('campaign-video') as HTMLVideoElement | null;
+	const overlay = document.getElementById('video-play-overlay');
+	const soundIcon = document.getElementById('video-sound-icon');
+
+	const mutedPath = `<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>`;
+	const unmutedPath = `<path d="M16.5 12A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM3 9v6h4l5 5V4L7 9H3zm10-5.51v1.54C15.18 5.96 17 8.82 17 12s-1.82 6.04-4 6.97v1.54C16.25 19.38 19 16 19 12s-2.75-7.38-6-8.51z"/>`;
+
+	if (video && overlay && soundIcon) {
+		overlay.addEventListener('click', () => {
+			video.muted = !video.muted;
+			soundIcon.innerHTML = video.muted ? mutedPath : unmutedPath;
+		});
+	}
+</script>

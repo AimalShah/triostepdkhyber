@@ -47,7 +47,14 @@ export default function ProductActions({ product }: { product: Product }) {
       {/* Primary Actions */}
       <div className="flex flex-col gap-3 pt-4">
         <button
-          onClick={() => selectedSize ? addToCart(product, selectedSize) : alert('Please select a size')}
+          onClick={() => {
+            if (selectedSize) {
+              addToCart(product, selectedSize);
+              window.dispatchEvent(new CustomEvent('open-cart'));
+            } else {
+              alert('Please select a size');
+            }
+          }}
           disabled={!product.inStock}
           className={`w-full py-6 text-[12px] uppercase tracking-[0.3em] font-black transition-all duration-500
             ${product.inStock 

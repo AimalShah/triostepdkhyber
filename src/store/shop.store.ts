@@ -47,6 +47,7 @@ interface ShopState {
 
   toggleWishlist: (id: number) => void;
   addToCart:      (product: Product, size: number) => void;
+  updateQty:      (productId: number, size: number, delta: number) => void;
   removeFromCart: (productId: number, size: number) => void;
   clearCart:      () => void;
 
@@ -107,6 +108,20 @@ export const useShopStore = create<ShopState>()(
         return { cart: [...s.cart, { product, size, qty: 1 }] };
       }),
 
+      updateQty: (productId, size, delta) => set((s) => {
+        const idx = s.cart.findIndex((i) => i.product.id === productId && i.size === size);
+        if (idx === -1) return s;
+        const newQty = s.cart[idx].qty + delta;
+        if (newQty <= 0) {
+          return {
+            cart: s.cart.filter((i) => !(i.product.id === productId && i.size === size)),
+          };
+        }
+        const cart = [...s.cart];
+        cart[idx] = { ...cart[idx], qty: newQty };
+        return { cart };
+      }),
+
       removeFromCart: (productId, size) => set((s) => ({
         cart: s.cart.filter((i) => !(i.product.id === productId && i.size === size)),
       })),
@@ -117,7 +132,7 @@ export const useShopStore = create<ShopState>()(
       getCartTotal: () => get().cart.reduce((s, i) => s + i.product.price * i.qty, 0),
     }),
     {
-      name: 'triostepdkhyber-shop-storage',
+      name: 'triostepdekhyaber-shop-storage',
     }
   )
 );
