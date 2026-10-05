@@ -47,7 +47,7 @@ const pathname = Astro.url.pathname;
     class="w-full bg-white/95 border-b border-gray-100 sticky top-0 z-[100] backdrop-blur-xl transition-all duration-300 shadow-[0_2px_20px_-10px_rgba(0,0,0,0.05)]"
 >
     <div
-        class="max-w-[1440px] mx-auto px-4 sm:px-6 py-3 sm:py-4 md:py-5 flex justify-between items-center gap-2 sm:gap-4"
+        class="max-w-[1440px] mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center gap-2 sm:gap-4"
     >
         {/* Logo & Brand Identity */}
         <a class="shrink min-w-0 flex items-center gap-2.5 sm:gap-3 relative z-[110] group" href="/">
@@ -111,15 +111,16 @@ const pathname = Astro.url.pathname;
              <WishlistHeaderBtn client:load />
              <CartDrawer client:load />
              
-             {/* Mobile Hamburger Toggle Button */}
+             {/* Single Unified Mobile Hamburger/Close Toggle */}
              <button 
                 id="mobile-menu-toggle" 
+                type="button"
                 class="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center p-2 rounded-sm text-dark hover:bg-gray-100 transition-colors ml-0.5 focus:outline-none cursor-pointer" 
                 aria-label="Toggle Navigation Menu"
                 aria-expanded="false"
-                aria-controls="mobile-menu-overlay"
+                aria-controls="mobile-menu-drawer"
              >
-                <div class="w-5 flex flex-col gap-1.5 pointer-events-none">
+                <div class="w-5 h-3.5 relative flex flex-col justify-between pointer-events-none">
                     <span id="line-top" class="w-full h-[1.5px] bg-dark origin-center transition-all duration-300"></span>
                     <span id="line-mid" class="w-full h-[1.5px] bg-dark transition-all duration-300"></span>
                     <span id="line-bot" class="w-full h-[1.5px] bg-dark origin-center transition-all duration-300"></span>
@@ -128,33 +129,28 @@ const pathname = Astro.url.pathname;
         </div>
     </div>
 
-    {/* Elite Mobile Menu Overlay */}
+    {/* Backdrop Tint Behind Drawer */}
     <div 
-        id="mobile-menu-overlay" 
-        class="fixed inset-0 bg-white z-[105] opacity-0 pointer-events-none transition-all duration-300 lg:hidden overflow-hidden"
+        id="mobile-menu-backdrop"
+        class="fixed inset-0 bg-dark/40 backdrop-blur-sm z-[90] opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
+    ></div>
+
+    {/* Clean Mobile Menu Drawer (Slides out cleanly below the header) */}
+    <div 
+        id="mobile-menu-drawer" 
+        class="fixed inset-x-0 bottom-0 z-[95] bg-white opacity-0 pointer-events-none -translate-y-2 transition-all duration-300 ease-out lg:hidden flex flex-col overflow-hidden shadow-2xl border-t border-gray-100"
     >
-        <div class="h-full flex flex-col px-6 sm:px-8 pt-6 pb-8 relative overflow-y-auto">
-            {/* Menu Header Bar */}
-            <div class="flex items-center justify-between pb-4 border-b border-gray-100 mb-6">
-                <div class="flex items-center gap-2">
-                    <img 
-                        src={logoImg.src} 
-                        alt="Triostepdekhyaber" 
-                        class="h-7 w-auto object-contain" 
-                    />
-                    <span class="font-display text-xs font-black uppercase tracking-[0.2em] text-dark">
-                        Atelier Menu
-                    </span>
-                </div>
-                
-                <button 
-                    id="mobile-menu-close-btn" 
-                    class="w-9 h-9 rounded-full bg-gray-100 hover:bg-dark hover:text-white flex items-center justify-center text-dark transition-colors cursor-pointer" 
-                    aria-label="Close menu"
-                >
-                    <span class="material-symbols-outlined text-base">close</span>
-                </button>
-            </div>
+        <div class="flex-1 overflow-y-auto px-6 py-6 flex flex-col">
+            {/* Quick In-Drawer Search Bar */}
+            <form action="/shop" method="GET" class="relative mb-6">
+                <span class="material-symbols-outlined text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 text-[18px]">search</span>
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Search silhouettes, derbies, boots..."
+                    class="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 text-xs text-dark placeholder-gray-400 focus:outline-none focus:border-dark font-medium transition-colors"
+                />
+            </form>
 
             {/* Quick Category Discovery Pills */}
             <div class="mb-6">
@@ -162,26 +158,26 @@ const pathname = Astro.url.pathname;
                     Fast Discovery
                 </span>
                 <div class="flex flex-wrap gap-2">
-                    <a href="/shop" class="mobile-menu-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-gray-50 border border-gray-200 text-dark hover:bg-dark hover:text-white transition-colors">
+                    <a href="/shop" class="mobile-drawer-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-gray-50 border border-gray-200 text-dark hover:bg-dark hover:text-white transition-colors">
                         Chelsea Boots
                     </a>
-                    <a href="/shop" class="mobile-menu-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-gray-50 border border-gray-200 text-dark hover:bg-dark hover:text-white transition-colors">
+                    <a href="/shop" class="mobile-drawer-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-gray-50 border border-gray-200 text-dark hover:bg-dark hover:text-white transition-colors">
                         Ankle Boots
                     </a>
-                    <a href="/shop" class="mobile-menu-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-gray-50 border border-gray-200 text-dark hover:bg-dark hover:text-white transition-colors">
+                    <a href="/shop" class="mobile-drawer-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-gray-50 border border-gray-200 text-dark hover:bg-dark hover:text-white transition-colors">
                         Derbies
                     </a>
-                    <a href="/shop" class="mobile-menu-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-gray-50 border border-gray-200 text-dark hover:bg-dark hover:text-white transition-colors">
+                    <a href="/shop" class="mobile-drawer-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-gray-50 border border-gray-200 text-dark hover:bg-dark hover:text-white transition-colors">
                         Loafers
                     </a>
-                    <a href="/sale" class="mobile-menu-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-700 hover:text-white transition-colors">
+                    <a href="/sale" class="mobile-drawer-link text-[10px] uppercase tracking-[0.2em] font-bold px-3 py-1.5 bg-rose-50 border border-rose-200 text-rose-700 hover:bg-rose-700 hover:text-white transition-colors">
                         Seasonal Sale %
                     </a>
                 </div>
             </div>
 
             {/* Navigation Links */}
-            <nav class="flex flex-col relative z-10 flex-1 divide-y divide-gray-100">
+            <nav class="flex flex-col divide-y divide-gray-100 flex-1">
                 {
                     [
                         { label: "Full Catalog",   href: "/shop" },
@@ -193,7 +189,7 @@ const pathname = Astro.url.pathname;
                         { label: "Our Story",      href: "/about" },
                     ].map(({ label, href, isSale }) => (
                         <a
-                            class="mobile-menu-link py-3.5 text-base sm:text-lg font-bold uppercase tracking-tight text-dark flex justify-between items-center group active:bg-gray-50 transition-colors"
+                            class="mobile-drawer-link py-3.5 text-base sm:text-lg font-bold uppercase tracking-tight text-dark flex justify-between items-center group active:bg-gray-50 transition-colors"
                             href={href}
                         >
                             <span class="flex items-center gap-2">
@@ -210,13 +206,13 @@ const pathname = Astro.url.pathname;
                 }
             </nav>
             
-            {/* Professional Footer Actions */}
-            <div class="mt-8 pt-6 border-t border-gray-100 relative z-10">
-                <div class="grid grid-cols-2 gap-3 mb-6">
-                    <a href="/shop" class="mobile-menu-link bg-dark text-white py-3 text-center text-[10px] uppercase tracking-[0.25em] font-black hover:bg-black transition-all shadow-sm">
+            {/* Drawer Footer Actions */}
+            <div class="mt-8 pt-6 border-t border-gray-100">
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <a href="/shop" class="mobile-drawer-link bg-dark text-white py-3 text-center text-[10px] uppercase tracking-[0.25em] font-black hover:bg-black transition-all shadow-sm">
                         Shop Catalog
                     </a>
-                    <a href="https://wa.me/923000000000" target="_blank" rel="noopener noreferrer" class="mobile-menu-link bg-emerald-600 text-white py-3 text-center text-[10px] uppercase tracking-[0.25em] font-black hover:bg-emerald-700 transition-all shadow-sm flex items-center justify-center gap-1.5">
+                    <a href="https://wa.me/923000000000" target="_blank" rel="noopener noreferrer" class="mobile-drawer-link bg-emerald-600 text-white py-3 text-center text-[10px] uppercase tracking-[0.25em] font-black hover:bg-emerald-700 transition-all shadow-sm flex items-center justify-center gap-1.5">
                         <span class="material-symbols-outlined text-sm">chat</span>
                         <span>Concierge</span>
                     </a>
@@ -233,15 +229,16 @@ const pathname = Astro.url.pathname;
 
 <script>
     function setupMobileMenu() {
+        const header = document.getElementById('site-header');
         const toggle = document.getElementById('mobile-menu-toggle');
-        const closeBtn = document.getElementById('mobile-menu-close-btn');
-        const overlay = document.getElementById('mobile-menu-overlay');
+        const drawer = document.getElementById('mobile-menu-drawer');
+        const backdrop = document.getElementById('mobile-menu-backdrop');
         const lineTop = document.getElementById('line-top');
         const lineMid = document.getElementById('line-mid');
         const lineBot = document.getElementById('line-bot');
-        const links = overlay?.querySelectorAll('.mobile-menu-link');
+        const links = drawer?.querySelectorAll('.mobile-drawer-link');
 
-        if (!toggle || !overlay) return;
+        if (!toggle || !drawer || !backdrop) return;
 
         let isOpen = false;
 
@@ -250,16 +247,28 @@ const pathname = Astro.url.pathname;
             toggle?.setAttribute('aria-expanded', String(isOpen));
 
             if (isOpen) {
-                // Morph hamburger into X
-                if (lineTop) lineTop.style.transform = 'translateY(7.5px) rotate(45deg)';
+                // Dynamically anchor drawer right below current header bottom
+                if (header && drawer) {
+                    const headerRect = header.getBoundingClientRect();
+                    drawer.style.top = `${headerRect.bottom}px`;
+                    if (backdrop) {
+                        backdrop.style.top = `${headerRect.bottom}px`;
+                    }
+                }
+
+                // Morph hamburger into clean X
+                if (lineTop) lineTop.style.transform = 'translateY(6.5px) rotate(45deg)';
                 if (lineMid) lineMid.style.opacity = '0';
-                if (lineBot) lineBot.style.transform = 'translateY(-7.5px) rotate(-45deg)';
+                if (lineBot) lineBot.style.transform = 'translateY(-6.5px) rotate(-45deg)';
 
-                // Show overlay
-                overlay.classList.remove('opacity-0', 'pointer-events-none');
-                overlay.classList.add('opacity-100', 'pointer-events-auto');
+                // Show backdrop & drawer
+                backdrop?.classList.remove('opacity-0', 'pointer-events-none');
+                backdrop?.classList.add('opacity-100', 'pointer-events-auto');
 
-                // Lock background scroll
+                drawer.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2');
+                drawer.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+
+                // Lock body scroll
                 document.body.style.overflow = 'hidden';
             } else {
                 // Morph X back into hamburger
@@ -267,11 +276,14 @@ const pathname = Astro.url.pathname;
                 if (lineMid) lineMid.style.opacity = '1';
                 if (lineBot) lineBot.style.transform = '';
 
-                // Hide overlay
-                overlay.classList.remove('opacity-100', 'pointer-events-auto');
-                overlay.classList.add('opacity-0', 'pointer-events-none');
+                // Hide backdrop & drawer
+                backdrop?.classList.remove('opacity-100', 'pointer-events-auto');
+                backdrop?.classList.add('opacity-0', 'pointer-events-none');
 
-                // Unlock background scroll
+                drawer.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                drawer.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+
+                // Unlock body scroll
                 document.body.style.overflow = '';
             }
         }
@@ -281,12 +293,11 @@ const pathname = Astro.url.pathname;
             setMenuState(!isOpen);
         });
 
-        closeBtn?.addEventListener('click', (e) => {
-            e.stopPropagation();
+        backdrop.addEventListener('click', () => {
             setMenuState(false);
         });
 
-        // Close when any navigation link inside the menu is tapped
+        // Close when any navigation link inside the drawer is tapped
         links?.forEach((link) => {
             link.addEventListener('click', () => {
                 setMenuState(false);
